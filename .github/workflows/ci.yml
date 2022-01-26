@@ -11,6 +11,15 @@ jobs:
           node-version: 14
       - run: npm install
       - run: npm run build
+      - run: mkdir -p build
+      - run: npm i markdown-to-html-cli -g
+      - run: markdown-to-html --output build/index.html --favicon 'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏞️</text></svg>'
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./coverage
 
       - name: Generate Contributors Images
         # uses: jaywcjlove/github-action-contributors@main
@@ -18,5 +27,6 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           filter-author: 'renovate\\[bot\\]'
+          output: build/CONTRIBUTORS.svg
 
       - run: ls -al

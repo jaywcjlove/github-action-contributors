@@ -12,10 +12,55 @@ inputs:
     default: ''
     required: false
 
+  count:
+    description: Specify the max count of contributors listed. Default list all contributors.
+    required: false
+
   output:
     description: 'output image path'
-    default: 'contributors.svg'
+    default: CONTRIBUTORS.svg
     required: false
+
+  truncate:
+    description: Truncate username by specified length, `0` for no truncate.
+    required: false
+    default: 12
+
+  svgWidth:
+    description: Width of the generated SVG.
+    required: false
+    default: 740
+
+  avatarSize:
+    description: Size of user avatar.
+    required: false
+    default: 24
+
+  avatarMargin:
+    description: Margin of user avatar.
+    required: false
+    default: 5
+
+  userNameHeight:
+    description: Height of user name.
+    required: false
+    default: 0
+
+  svgTemplate:
+    description: Template to render SVG.
+    required: false
+    default: >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        version="1.1"
+        width="{{ width }}"
+        height="{{ contributorsHeight }}"
+      >
+        <style>.contributor-link { cursor: pointer; }</style>
+        {{{ contributors }}}
+      </svg>
+
 
 outputs:
   names:

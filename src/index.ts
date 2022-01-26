@@ -2,11 +2,7 @@ import path from 'path';
 import { setFailed, getInput, info } from '@actions/core';
 import { getOctokit, context } from '@actions/github';
 import image2uri from 'image2uri';
-
-const svgStr = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="890" height="262">
-<style>.github-contributors-svg { cursor: pointer; }</style>
-{{{contributors}}}
-</svg>`;
+import { imageSize } from 'image-size';
 
 type Data = {
   login: string;
@@ -30,12 +26,58 @@ type Data = {
   contributions: number;
 }
 
+export function getInputs() {
+  const count = parseInt(getInput('count'), 10)
+  const truncate = parseInt(getInput('truncate'), 10)
+  const svgWidth = parseInt(getInput('svgWidth'), 10)
+  const avatarSize = parseInt(getInput('avatarSize'), 10)
+  const avatarMargin = parseInt(getInput('avatarMargin'), 10)
+  const userNameHeight = parseInt(getInput('userNameHeight'), 10)
+  return {
+    count: Number.isNaN(count) ? null : count,
+    includeBots: getInput('includeBots') === 'true',
+    affiliation: getInput('affiliation') as 'all' | 'direct' | 'outside',
+    svgTemplate: getInput('svgTemplate'),
+    svgPath: getInput('output') || './contributors.svg',
+    truncate: Number.isNaN(truncate) ? 0 : truncate,
+    svgWidth: Number.isNaN(svgWidth) ? 740 : svgWidth,
+    avatarSize: Number.isNaN(avatarSize) ? 24 : avatarSize,
+    avatarMargin: Number.isNaN(avatarMargin) ? 5 : avatarMargin,
+    userNameHeight: Number.isNaN(userNameHeight) ? 0 : userNameHeight,
+  }
+}
+
+function calcSectionHeight(total: number, options: ReturnType<typeof getInputs>) {
+  const { svgWidth } = options;
+  const { avatarMargin } = options;
+  const avatarWidth = options.avatarSize;
+  const avatarHeight = options.avatarSize;
+  const itemWidth = avatarWidth + 2 * avatarMargin;
+  const itemHeight = avatarHeight + 2 * avatarMargin + options.userNameHeight;
+  const colCount = Math.floor(svgWidth / itemWidth);
+  return itemHeight * Math.ceil(total / colCount);
+}
+
+function getItemBBox(index: number, options: ReturnType<typeof getInputs>) {
+  const { svgWidth, avatarMargin } = options;
+  const avatarWidth = options.avatarSize;
+  const avatarHeight = options.avatarSize;
+  const colCount = Math.floor(svgWidth / (avatarWidth + 2 * avatarMargin));
+  const colIndex = index % colCount;
+  const rowIndex = Math.floor(index / colCount);
+  return {
+    x: avatarMargin + colIndex * (avatarWidth + avatarMargin),
+    y: avatarMargin + rowIndex * (avatarHeight + avatarMargin + options.userNameHeight),
+    width: avatarWidth,
+    height: avatarHeight,
+  }
+}
+
 class Generator {
+  options: ReturnType<typeof getInputs>;
   token: string;
   owner: string;
   repo: string;
-  output: string;
-  svg: string;
   data: Array<Data> = [];
   constructor() {
     const { owner, repo } = context.repo;
@@ -47,6 +89,7 @@ class Generator {
     }
     this.repo = repo;
     this.owner = owner;
+    this.options = getInputs();
 
     const myToken = getInput('token');
     if (!myToken) {
@@ -58,8 +101,8 @@ class Generator {
     if (!output) {
       setFailed(`'output' does not exist!`);
     }
-    this.output = path.resolve(process.cwd(), output);
-    info(`output: \x1b[34m${this.output}\x1b[0m`);
+    this.options.svgPath = path.resolve(process.cwd(), output);
+    info(`output: \x1b[34m${this.options.svgPath}\x1b[0m`);
     info(`owner/repo: \x1b[34m${owner}/${repo}\x1b[0m`);
   }
   async getContributors() {
@@ -75,16 +118,20 @@ class Generator {
   }
   async generator() {
     const filterAuthor = getInput('filter-author');
-    const avatar = await Promise.all(this.data.map(async (item) => {
+    const avatar = await Promise.all(this.data.map(async (item, idx) => {
       if ((new RegExp(filterAuthor)).test(item.login)) {
         return '';
       }
+      const { x, y, width, height } = getItemBBox(idx, this.options);
       const img = await image2uri(item.avatar_url, { ext: '.apng' });
-      return `<a xlink:href="https://github.com/${item.login}" class="github-contributors-svg" target="_blank" rel="nofollow sponsored" id="${item.login}">
-<image x="106" y="210" width="24" height="24" xlink:href="${img}"/>
+      return `<a xlink:href="https://github.com/${item.login}" class="contributor-link" target="_blank" rel="nofollow sponsored" id="${item.login}">
+<image x="${x}" y="${y}" width="${width}" height="${height}" xlink:href="${img}"/>
 </a>`;
     }));
-    return svgStr.replace('{{{contributors}}}', avatar.join(''));
+    const contributorsHeight = calcSectionHeight(this.data.length, this.options);
+    return this.options.svgTemplate.replace('{{ width }}', String(this.options.svgWidth))
+      .replace('{{ contributorsHeight }}', String(contributorsHeight))
+      .replace('{{{ contributors }}}', avatar.join(''));
   }
 }
 
