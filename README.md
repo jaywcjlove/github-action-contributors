@@ -84,3 +84,13 @@ $ npm install
 $ npm run watch # Listen compile .ts files.
 $ npm run build # compile .ts files.
 ```
+
+## Contributors
+
+<a href="https://github.com/jaywcjlove/github-action-contributors/graphs/contributors">
+  <img src="https://jaywcjlove.github.io/github-action-contributors/CONTRIBUTORS.svg" />
+</a>
+
+### License
+
+Licensed under the MIT License.
