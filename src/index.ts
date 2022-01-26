@@ -5,7 +5,7 @@ import image2uri from 'image2uri';
 
 const svgStr = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="890" height="262">
 <style>.github-contributors-svg { cursor: pointer; }</style>
-{{avatar}}
+{{{contributors}}}
 </svg>`;
 
 type Data = {
@@ -74,13 +74,17 @@ class Generator {
     return list
   }
   async generator() {
-    const avatar = await Promise.all(this.data.map(async (item, idx) => {
+    const filterAuthor = getInput('filter-author');
+    const avatar = await Promise.all(this.data.map(async (item) => {
+      if ((new RegExp(filterAuthor)).test(item.login)) {
+        return '';
+      }
       const img = await image2uri(item.avatar_url, { ext: '.apng' });
       return `<a xlink:href="https://github.com/${item.login}" class="github-contributors-svg" target="_blank" rel="nofollow sponsored" id="${item.login}">
 <image x="106" y="210" width="24" height="24" xlink:href="${img}"/>
-</a>`
+</a>`;
     }));
-    return svgStr.replace('{{avatar}}', avatar.join(''));
+    return svgStr.replace('{{{contributors}}}', avatar.join(''));
   }
 }
 

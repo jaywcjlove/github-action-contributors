@@ -11,6 +11,7 @@ inputs:
     description: 'Regular expression filtering'
     default: ''
     required: false
+
   output:
     description: 'output image path'
     default: 'contributors.svg'
