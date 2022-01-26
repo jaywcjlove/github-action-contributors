@@ -101,6 +101,6 @@ $ npm run build # compile .ts files.
   <img src="https://jaywcjlove.github.io/github-action-contributors/CONTRIBUTORS.svg" />
 </a>
 
-### License
+## License
 
 Licensed under the MIT License.
