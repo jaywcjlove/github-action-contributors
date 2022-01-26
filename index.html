@@ -18,19 +18,76 @@
     <div class="markdown-body">
       <h1 id="github-action-contributors"><a class="anchor" aria-hidden="true" tabindex="-1" href="#github-action-contributors"><span class="octicon octicon-link"></span></a>github-action-contributors</h1>
       <p>Github action generates dynamic image URL for contributor list to display it!</p>
+      <h2 id="inputs"><a class="anchor" aria-hidden="true" tabindex="-1" href="#inputs"><span class="octicon octicon-link"></span></a>Inputs</h2>
+      <h4 id="token"><a class="anchor" aria-hidden="true" tabindex="-1" href="#token"><span class="octicon octicon-link"></span></a><code>token</code></h4>
+      <p>Your <code>GITHUB_TOKEN</code>. This is required. Why do we need <code>token</code>? Read more here: <a href="https://help.github.com/en/actions/automating-your-workflow-with-github-actions/authenticating-with-the-github_token#about-the-github_token-secret">About the GITHUB_TOKEN secret</a></p>
+      <p>Default: <code>${{ github.token }}</code></p>
+      <h4 id="filter-author"><a class="anchor" aria-hidden="true" tabindex="-1" href="#filter-author"><span class="octicon octicon-link"></span></a>filter-author:</h4>
+      <p>Regular expression filtering'.</p>
+      <h4 id="count"><a class="anchor" aria-hidden="true" tabindex="-1" href="#count"><span class="octicon octicon-link"></span></a>count:</h4>
+      <p>Specify the max count of contributors listed. Default list all contributors.</p>
+      <h4 id="output"><a class="anchor" aria-hidden="true" tabindex="-1" href="#output"><span class="octicon octicon-link"></span></a>output:</h4>
+      <p>output image path. default: <code>CONTRIBUTORS.svg</code></p>
+      <h4 id="truncate"><a class="anchor" aria-hidden="true" tabindex="-1" href="#truncate"><span class="octicon octicon-link"></span></a>truncate:</h4>
+      <p>Truncate username by specified length, <code>0</code> for no truncate. default: <code>12</code></p>
+      <h4 id="svgwidth"><a class="anchor" aria-hidden="true" tabindex="-1" href="#svgwidth"><span class="octicon octicon-link"></span></a>svgWidth:</h4>
+      <p>Width of the generated SVG. default: <code>740</code></p>
+      <h4 id="avatarsize"><a class="anchor" aria-hidden="true" tabindex="-1" href="#avatarsize"><span class="octicon octicon-link"></span></a>avatarSize:</h4>
+      <p>Size of user avatar. default: <code>24</code></p>
+      <h4 id="avatarmargin"><a class="anchor" aria-hidden="true" tabindex="-1" href="#avatarmargin"><span class="octicon octicon-link"></span></a>avatarMargin:</h4>
+      <p>Margin of user avatar. default: <code>5</code></p>
+      <h4 id="usernameheight"><a class="anchor" aria-hidden="true" tabindex="-1" href="#usernameheight"><span class="octicon octicon-link"></span></a>userNameHeight:</h4>
+      <p>Height of user name. default: <code>0</code></p>
+      <h4 id="svgtemplate"><a class="anchor" aria-hidden="true" tabindex="-1" href="#svgtemplate"><span class="octicon octicon-link"></span></a>svgTemplate</h4>
+      <p>Template to render SVG.</p>
+      <pre class="language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>svg</span>
+  <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.w3.org/2000/svg<span class="token punctuation">"</span></span>
+  <span class="token attr-name"><span class="token namespace">xmlns:</span>xlink</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.w3.org/1999/xlink<span class="token punctuation">"</span></span>
+  <span class="token attr-name">version</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1.1<span class="token punctuation">"</span></span>
+  <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>{{ width }}<span class="token punctuation">"</span></span>
+  <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>{{ contributorsHeight }}<span class="token punctuation">"</span></span>
+<span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>style</span><span class="token punctuation">></span></span>.contributor-link { cursor: pointer; }<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>style</span><span class="token punctuation">></span></span>
+  {{{ contributors }}}
+<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>svg</span><span class="token punctuation">></span></span>
+</code><div onclick="copied(this)" data-code="<svg
+  xmlns=&#x22;http://www.w3.org/2000/svg&#x22;
+  xmlns:xlink=&#x22;http://www.w3.org/1999/xlink&#x22;
+  version=&#x22;1.1&#x22;
+  width=&#x22;{{ width }}&#x22;
+  height=&#x22;{{ contributorsHeight }}&#x22;
+>
+  <style>.contributor-link { cursor: pointer; }</style>
+  {{{ contributors }}}
+</svg>
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+      <h2 id="outputs"><a class="anchor" aria-hidden="true" tabindex="-1" href="#outputs"><span class="octicon octicon-link"></span></a>Outputs</h2>
+      <ul>
+        <li><code>svg</code> svg image string: <code>&#x3C;svg xmlns....</code>.</li>
+      </ul>
+      <h2 id="example-usage"><a class="anchor" aria-hidden="true" tabindex="-1" href="#example-usage"><span class="octicon octicon-link"></span></a>Example Usage</h2>
+      <pre class="language-yml"><code class="language-yml"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Generate Contributors Images
+  <span class="token key atrule">uses</span><span class="token punctuation">:</span> jaywcjlove/github<span class="token punctuation">-</span>action<span class="token punctuation">-</span>contributors@main
+  <span class="token key atrule">with</span><span class="token punctuation">:</span>
+    <span class="token key atrule">token</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> secrets.GITHUB_TOKEN <span class="token punctuation">}</span><span class="token punctuation">}</span>
+    <span class="token key atrule">filter-author</span><span class="token punctuation">:</span> <span class="token string">'renovate\\[bot\\]'</span>
+    <span class="token key atrule">output</span><span class="token punctuation">:</span> build/CONTRIBUTORS.svg
+</code><div onclick="copied(this)" data-code="- name: Generate Contributors Images
+  uses: jaywcjlove/github-action-contributors@main
+  with:
+    token: ${{ secrets.GITHUB_TOKEN }}
+    filter-author: &#x27;renovate\\[bot\\]&#x27;
+    output: build/CONTRIBUTORS.svg
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
       <h2 id="quick-start"><a class="anchor" aria-hidden="true" tabindex="-1" href="#quick-start"><span class="octicon octicon-link"></span></a>Quick Start</h2>
       <pre class="language-shell"><code class="language-shell">$ <span class="token function">npm</span> <span class="token function">install</span>
 
 $ <span class="token function">npm</span> run <span class="token function">watch</span> <span class="token comment"># Listen compile .ts files.</span>
 $ <span class="token function">npm</span> run build <span class="token comment"># compile .ts files.</span>
-
-$ <span class="token function">npm</span> run start
 </code><div onclick="copied(this)" data-code="$ npm install
 
 $ npm run watch # Listen compile .ts files.
 $ npm run build # compile .ts files.
-
-$ npm run start
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
       <script>function copied(target, str) {
 target.classList.add('active');
