@@ -3,17 +3,18 @@
     "module": "commonjs",
     "esModuleInterop": true,
     "declaration": true,
-    "target": "es2017",
+    "target": "ES2017",
     "noImplicitAny": true,
     "resolveJsonModule": true,
-    "moduleResolution": "node",
+    "strict": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "sourceMap": true,
-    "strict": false,
     "skipLibCheck": true,
     "outDir": "lib",
+    "types": ["jest", "node"],
     "baseUrl": "."
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*"],
+  "exclude": ["lib"]
 }
