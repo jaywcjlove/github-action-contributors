@@ -1,4 +1,4 @@
-import core, { } from '@actions/core';
+import core, { setFailed } from '@actions/core';
 import github, { getOctokit } from '@actions/github';
 
 // InstanceType<typeof GitHub>
@@ -10,14 +10,14 @@ class Generator {
   constructor() {
     const { owner, repo } = github.context.repo;
     if (!repo) {
-      core.setFailed(`repo name does not exist!`);
+      setFailed(`repo name does not exist!`);
     }
     if (!owner) {
-      core.setFailed(`owner name does not exist!`);
+      setFailed(`owner name does not exist!`);
     }
     const myToken = core.getInput('token');
     if (!myToken) {
-      core.setFailed(`token does not exist!`);
+      setFailed(`token does not exist!`);
     }
     this.token = myToken;
     this.repo = repo;
@@ -34,12 +34,12 @@ class Generator {
   }
 }
 
-;(async () => {
-  try {
+try {
+  ;(async () => {
     const gen = new Generator();
     const list = await gen.getContributors();
     console.log(list)
-  } catch (error) {
-    core.setFailed(error.message);
-  }
-})();
+  })();
+} catch (error) {
+  setFailed(error.message);
+}
