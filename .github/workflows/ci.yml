@@ -20,7 +20,7 @@ jobs:
         uses: ./
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          filter-author: 'renovate\\[bot\\]'
+          filter-author: 'renovate\[bot\]'
           output: build/CONTRIBUTORS.svg
           avatarSize: 36
 
