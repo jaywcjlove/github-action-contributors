@@ -63,8 +63,8 @@ inputs:
 
 
 outputs:
-  names:
-    description: 'The version number of the tag created. example: 1.0.0'
+  svg:
+    description: 'svg image string'
 runs:
   using: 'node12'
   main: 'lib/index.js'

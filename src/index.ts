@@ -1,6 +1,6 @@
 import path from 'path';
-import fs, { writeFile } from 'fs';
-import { setFailed, getInput, info } from '@actions/core';
+import fs from 'fs';
+import { setFailed, setOutput, getInput, info } from '@actions/core';
 import { getOctokit, context } from '@actions/github';
 import image2uri from 'image2uri';
 
@@ -133,6 +133,7 @@ class Generator {
     this.svg = this.options.svgTemplate.replace('{{ width }}', String(this.options.svgWidth))
       .replace('{{ contributorsHeight }}', String(contributorsHeight))
       .replace('{{{ contributors }}}', avatar.join(''));
+    setOutput('svg', this.svg)
     return this.svg;
   }
   async writeFile() {
