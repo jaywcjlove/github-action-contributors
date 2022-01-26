@@ -120,10 +120,9 @@ class Generator {
   async generator() {
     const filterAuthor = getInput('filter-author');
     const avatar = await Promise.all(this.data.map(async (item, idx) => {
-      startGroup(`Commit: \x1b[34m(${item.login})\x1b[0m`);
+      startGroup(`Commit: \x1b[34m(${item.login})\x1b[0m / filterAuthor=> ${(new RegExp(filterAuthor)).test(item.login)}`);
       info(`${JSON.stringify(item, null, 2)}`);
       endGroup();
-      info(`${filterAuthor} ${(new RegExp(filterAuthor)).test(item.login)}`);
       if ((new RegExp(filterAuthor)).test(item.login)) {
         return '';
       }
