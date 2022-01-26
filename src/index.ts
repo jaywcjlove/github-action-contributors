@@ -1,5 +1,5 @@
 import core, { setFailed } from '@actions/core';
-import github, { getOctokit } from '@actions/github';
+import { getOctokit, context } from '@actions/github';
 
 // InstanceType<typeof GitHub>
 
@@ -8,7 +8,7 @@ class Generator {
   owner: string;
   repo: string;
   constructor() {
-    const { owner, repo } = github.context.repo;
+    const { owner, repo } = context.repo;
     if (!repo) {
       setFailed(`repo name does not exist!`);
     }
