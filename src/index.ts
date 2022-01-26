@@ -1,4 +1,4 @@
-import core, { setFailed } from '@actions/core';
+import { setFailed, getInput, info } from '@actions/core';
 import { getOctokit, context } from '@actions/github';
 
 // InstanceType<typeof GitHub>
@@ -15,14 +15,14 @@ class Generator {
     if (!owner) {
       setFailed(`owner name does not exist!`);
     }
-    const myToken = core.getInput('token');
+    const myToken = getInput('token');
     if (!myToken) {
       setFailed(`token does not exist!`);
     }
     this.token = myToken;
     this.repo = repo;
     this.owner = owner;
-    core.info(`owner/repo: \x1b[34m${owner}/${repo}\x1b[0m`);
+    info(`owner/repo: \x1b[34m${owner}/${repo}\x1b[0m`);
   }
   async getContributors() {
     const octokit = getOctokit(this.token);
