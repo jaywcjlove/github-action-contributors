@@ -33,6 +33,17 @@ Github action generates dynamic image URL for contributor list to display it!
 https://jaywcjlove.github.io/github-action-contributors/CONTRIBUTORS.svg
 ```
 
+Use in markdown
+
+```markdown
+## Contributors
+
+<a href="https://github.com/jaywcjlove/github-action-contributors/graphs/contributors">
+  <img src="https://jaywcjlove.github.io/github-action-contributors/CONTRIBUTORS.svg" />
+</a>
+
+```
+
 ## Inputs
 
 #### `token`
