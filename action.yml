@@ -1,0 +1,27 @@
+name: 'Github Contributors Icon Generator'
+author: 'Kenny Wong'
+description: 'Github action generates dynamic image URL for contributor list to display it!.'
+inputs:
+  token:
+    description: 'Your GITHUB_TOKEN'
+    default: ${{ github.token }}
+    required: false
+
+  filter-author:
+    description: 'Regular expression filtering'
+    default: ''
+    required: false
+  output:
+    description: 'output image path'
+    default: 'contributors.svg'
+    required: false
+
+outputs:
+  names:
+    description: 'The version number of the tag created. example: 1.0.0'
+runs:
+  using: 'node12'
+  main: 'lib/index.js'
+branding:
+  icon: 'list'
+  color: 'blue'

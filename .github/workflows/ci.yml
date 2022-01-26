@@ -1,0 +1,20 @@
+name: test
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - run: npm install
+      - run: npm run build
+
+      - name: Generate Contributors Images
+        # uses: jaywcjlove/github-action-contributors@main
+        uses: ./
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          filter-author: '[R|r]elease[d]\s+[v|V]\d(\.\d+){0,2}'
