@@ -26,7 +26,7 @@
   <span class="token key atrule">uses</span><span class="token punctuation">:</span> jaywcjlove/github<span class="token punctuation">-</span>action<span class="token punctuation">-</span>contributors@main
   <span class="token key atrule">with</span><span class="token punctuation">:</span>
     <span class="token key atrule">token</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> secrets.GITHUB_TOKEN <span class="token punctuation">}</span><span class="token punctuation">}</span>
-    <span class="token key atrule">filter-author</span><span class="token punctuation">:</span> <span class="token string">'renovate\\[bot\\]'</span>
+    <span class="token key atrule">filter-author</span><span class="token punctuation">:</span> renovate\<span class="token punctuation">[</span>bot\<span class="token punctuation">]</span>
     <span class="token key atrule">output</span><span class="token punctuation">:</span> build/CONTRIBUTORS.svg
 
 <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Deploy
@@ -39,7 +39,7 @@
   uses: jaywcjlove/github-action-contributors@main
   with:
     token: ${{ secrets.GITHUB_TOKEN }}
-    filter-author: &#x27;renovate\\[bot\\]&#x27;
+    filter-author: renovate\[bot\]
     output: build/CONTRIBUTORS.svg
 
 - name: Deploy
