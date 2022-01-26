@@ -22,6 +22,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           filter-author: 'renovate\\[bot\\]'
           output: build/CONTRIBUTORS.svg
+          avatarSize: 36
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
