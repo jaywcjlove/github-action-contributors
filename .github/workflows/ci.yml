@@ -57,3 +57,23 @@ jobs:
             ${{ steps.changelog.outputs.compareurl }}
             
             ${{ steps.changelog.outputs.changelog }}
+
+            ```yml
+            - run: mkdir -p build
+            - name: Generate Contributors Images
+              uses: jaywcjlove/github-action-contributors@main
+              with:
+                token: ${{ secrets.GITHUB_TOKEN }}
+                filter-author: renovate\[bot\]
+                output: build/CONTRIBUTORS.svg
+
+            - name: Deploy
+              uses: peaceiris/actions-gh-pages@v3
+              with:
+                github_token: ${{ secrets.GITHUB_TOKEN }}
+                publish_dir: ./build
+            ```
+
+            <a href="https://github.com/jaywcjlove/github-action-contributors/graphs/contributors">
+              <img src="https://jaywcjlove.github.io/github-action-contributors/CONTRIBUTORS.svg" />
+            </a>
