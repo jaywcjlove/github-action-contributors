@@ -19,7 +19,7 @@ Github action generates dynamic image URL for contributor list to display it!
   uses: jaywcjlove/github-action-contributors@main
   with:
     token: ${{ secrets.GITHUB_TOKEN }}
-    filter-author: 'renovate\\[bot\\]'
+    filter-author: renovate\[bot\]
     output: build/CONTRIBUTORS.svg
 
 - name: Deploy
