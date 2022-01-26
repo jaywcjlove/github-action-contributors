@@ -66,14 +66,24 @@ Template to render SVG.
 
 ## Example Usage
 
-
 ```yml
+- run: mkdir -p build
 - name: Generate Contributors Images
   uses: jaywcjlove/github-action-contributors@main
   with:
     token: ${{ secrets.GITHUB_TOKEN }}
     filter-author: 'renovate\\[bot\\]'
     output: build/CONTRIBUTORS.svg
+
+- name: Deploy
+  uses: peaceiris/actions-gh-pages@v3
+  with:
+    github_token: ${{ secrets.GITHUB_TOKEN }}
+    publish_dir: ./build
+```
+
+```
+https://jaywcjlove.github.io/github-action-contributors/CONTRIBUTORS.svg
 ```
 
 ## Quick Start
