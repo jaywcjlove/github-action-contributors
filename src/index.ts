@@ -88,7 +88,7 @@ try {
   ;(async () => {
     const gen = new Generator();
     await gen.getContributors();
-    const str = gen.generator()
+    const str = await gen.generator();
     console.log(str)
   })();
 } catch (error) {
