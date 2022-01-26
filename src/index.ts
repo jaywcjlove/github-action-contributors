@@ -73,13 +73,14 @@ class Generator {
     }
     return list
   }
-  generator() {
-    const avatar = this.data.map((item, idx) => {
+  async generator() {
+    const avatar = await Promise.all(this.data.map(async (item, idx) => {
+      const img = await image2uri(item.avatar_url, { ext: '.apng' });
       return `<a xlink:href="https://github.com/${item.login}" class="github-contributors-svg" target="_blank" rel="nofollow sponsored" id="${item.login}">
-<image x="106" y="210" width="24" height="24" xlink:href="${image2uri(item.avatar_url, { ext: '.apng' })}"/>
+<image x="106" y="210" width="24" height="24" xlink:href="${img}"/>
 </a>`
-    });
-    return svgStr.replace('{{avatar}}', avatar.join(''))
+    }));
+    return svgStr.replace('{{avatar}}', avatar.join(''));
   }
 }
 
