@@ -123,6 +123,7 @@ class Generator {
       startGroup(`Commit: \x1b[34m(${item.login})\x1b[0m`);
       info(`${JSON.stringify(item, null, 2)}`);
       endGroup();
+      info(`${filterAuthor} ${(new RegExp(filterAuthor)).test(item.login)}`);
       if ((new RegExp(filterAuthor)).test(item.login)) {
         return '';
       }
