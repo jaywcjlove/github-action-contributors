@@ -1,8 +1,8 @@
 import path from 'path';
+import fs, { writeFile } from 'fs';
 import { setFailed, getInput, info } from '@actions/core';
 import { getOctokit, context } from '@actions/github';
 import image2uri from 'image2uri';
-import { imageSize } from 'image-size';
 
 type Data = {
   login: string;
@@ -78,6 +78,7 @@ class Generator {
   token: string;
   owner: string;
   repo: string;
+  svg: string;
   data: Array<Data> = [];
   constructor() {
     const { owner, repo } = context.repo;
@@ -129,9 +130,15 @@ class Generator {
 </a>`;
     }));
     const contributorsHeight = calcSectionHeight(this.data.length, this.options);
-    return this.options.svgTemplate.replace('{{ width }}', String(this.options.svgWidth))
+    this.svg = this.options.svgTemplate.replace('{{ width }}', String(this.options.svgWidth))
       .replace('{{ contributorsHeight }}', String(contributorsHeight))
       .replace('{{{ contributors }}}', avatar.join(''));
+    return this.svg;
+  }
+  async writeFile() {
+    const data = new Uint8Array(Buffer.from(this.svg));
+    await fs.promises.writeFile(this.options.svgPath, data);
+    info(`Generated: "${this.options.svgPath}"`)
   }
 }
 
@@ -139,8 +146,8 @@ try {
   ;(async () => {
     const gen = new Generator();
     await gen.getContributors();
-    const str = await gen.generator();
-    console.log(str)
+    await gen.generator();
+    await gen.writeFile();
   })();
 } catch (error) {
   setFailed(error.message);
