@@ -1,6 +1,6 @@
 import path from 'path';
 import fs from 'fs';
-import { setFailed, setOutput, getInput, info } from '@actions/core';
+import { setFailed, setOutput, getInput, info, startGroup, endGroup } from '@actions/core';
 import { getOctokit, context } from '@actions/github';
 import image2uri from 'image2uri';
 
@@ -120,6 +120,9 @@ class Generator {
   async generator() {
     const filterAuthor = getInput('filter-author');
     const avatar = await Promise.all(this.data.map(async (item, idx) => {
+      startGroup(`Commit: \x1b[34m(${item.login})\x1b[0m`);
+      info(`${JSON.stringify(item, null, 2)}`);
+      endGroup();
       if ((new RegExp(filterAuthor)).test(item.login)) {
         return '';
       }
