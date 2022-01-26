@@ -3,6 +3,34 @@ github-action-contributors
 
 Github action generates dynamic image URL for contributor list to display it!
 
+## Contributors
+
+<a href="https://github.com/jaywcjlove/github-action-contributors/graphs/contributors">
+  <img src="https://jaywcjlove.github.io/github-action-contributors/CONTRIBUTORS.svg" />
+</a>
+
+## Usage
+
+```yml
+- run: mkdir -p build
+- name: Generate Contributors Images
+  uses: jaywcjlove/github-action-contributors@main
+  with:
+    token: ${{ secrets.GITHUB_TOKEN }}
+    filter-author: 'renovate\\[bot\\]'
+    output: build/CONTRIBUTORS.svg
+
+- name: Deploy
+  uses: peaceiris/actions-gh-pages@v3
+  with:
+    github_token: ${{ secrets.GITHUB_TOKEN }}
+    publish_dir: ./build
+```
+
+```
+https://jaywcjlove.github.io/github-action-contributors/CONTRIBUTORS.svg
+```
+
 ## Inputs
 
 #### `token`
@@ -64,28 +92,6 @@ Template to render SVG.
 
 - `svg` svg image string: `<svg xmlns....`.
 
-## Example Usage
-
-```yml
-- run: mkdir -p build
-- name: Generate Contributors Images
-  uses: jaywcjlove/github-action-contributors@main
-  with:
-    token: ${{ secrets.GITHUB_TOKEN }}
-    filter-author: 'renovate\\[bot\\]'
-    output: build/CONTRIBUTORS.svg
-
-- name: Deploy
-  uses: peaceiris/actions-gh-pages@v3
-  with:
-    github_token: ${{ secrets.GITHUB_TOKEN }}
-    publish_dir: ./build
-```
-
-```
-https://jaywcjlove.github.io/github-action-contributors/CONTRIBUTORS.svg
-```
-
 ## Quick Start
 
 ```shell
@@ -94,12 +100,6 @@ $ npm install
 $ npm run watch # Listen compile .ts files.
 $ npm run build # compile .ts files.
 ```
-
-## Contributors
-
-<a href="https://github.com/jaywcjlove/github-action-contributors/graphs/contributors">
-  <img src="https://jaywcjlove.github.io/github-action-contributors/CONTRIBUTORS.svg" />
-</a>
 
 ## License
 
