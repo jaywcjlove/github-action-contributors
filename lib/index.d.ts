@@ -3,6 +3,7 @@ export declare function getInputs(): {
     includeBots: boolean;
     affiliation: "all" | "direct" | "outside";
     svgTemplate: string;
+    filterAuthor: string;
     svgPath: string;
     truncate: number;
     svgWidth: number;

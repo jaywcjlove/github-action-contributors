@@ -38,6 +38,7 @@ export function getInputs() {
     includeBots: getInput('includeBots') === 'true',
     affiliation: getInput('affiliation') as 'all' | 'direct' | 'outside',
     svgTemplate: getInput('svgTemplate'),
+    filterAuthor: getInput('filter-author'),
     svgPath: getInput('output') || './contributors.svg',
     truncate: Number.isNaN(truncate) ? 0 : truncate,
     svgWidth: Number.isNaN(svgWidth) ? 740 : svgWidth,
@@ -113,19 +114,16 @@ class Generator {
       repo: this.repo
     });
     if (list.data && list.data.length > 0) {
+      list.data = (list.data as Array<Data>).filter((item) => !(new RegExp(this.options.filterAuthor)).test(item.login));
       this.data = list.data;
     }
     return list
   }
   async generator() {
-    const filterAuthor = getInput('filter-author');
     const avatar = await Promise.all(this.data.map(async (item, idx) => {
-      startGroup(`Commit: \x1b[34m(${item.login})\x1b[0m / filterAuthor=> ${(new RegExp(filterAuthor)).test(item.login)}`);
+      startGroup(`Commit: \x1b[34m(${item.login})\x1b[0m`);
       info(`${JSON.stringify(item, null, 2)}`);
       endGroup();
-      if ((new RegExp(filterAuthor)).test(item.login)) {
-        return '';
-      }
       const { x, y, width, height } = getItemBBox(idx, this.options);
       const img = await image2uri(item.avatar_url, { ext: '.apng' });
       return `<a xlink:href="https://github.com/${item.login}" class="contributor-link" target="_blank" rel="nofollow sponsored" id="${item.login}">
