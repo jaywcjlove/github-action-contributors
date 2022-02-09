@@ -7,9 +7,13 @@ Github action generates dynamic image URL for contributor list to display it!
 
 ## Contributors
 
+As always, thanks to our amazing contributors!
+
 <a href="https://github.com/jaywcjlove/github-action-contributors/graphs/contributors">
   <img src="https://jaywcjlove.github.io/github-action-contributors/CONTRIBUTORS.svg" />
 </a>
+
+Made with [github-action-contributors](https://github.com/jaywcjlove/github-action-contributors).
 
 ## Usage
 
@@ -39,10 +43,13 @@ Use in markdown
 ```markdown
 ## Contributors
 
+As always, thanks to our amazing contributors!
+
 <a href="https://github.com/jaywcjlove/github-action-contributors/graphs/contributors">
   <img src="https://jaywcjlove.github.io/github-action-contributors/CONTRIBUTORS.svg" />
 </a>
 
+Made with [github-action-contributors](https://github.com/jaywcjlove/github-action-contributors).
 ```
 
 ## Inputs
@@ -117,9 +124,13 @@ $ npm run build # compile .ts files.
 
 ## Contributors
 
+As always, thanks to our amazing contributors!
+
 <a href="https://github.com/jaywcjlove/github-action-contributors/graphs/contributors">
   <img src="https://jaywcjlove.github.io/github-action-contributors/CONTRIBUTORS.svg" />
 </a>
+
+Made with [github-action-contributors](https://github.com/jaywcjlove/github-action-contributors).
 
 ## License
 
