@@ -19,7 +19,9 @@
       <h1 id="github-action-contributors"><a class="anchor" aria-hidden="true" tabindex="-1" href="#github-action-contributors"><span class="octicon octicon-link"></span></a>github-action-contributors</h1>
       <p><a href="https://github.com/jaywcjlove/github-action-contributors/actions/workflows/ci.yml"><img src="https://github.com/jaywcjlove/github-action-contributors/actions/workflows/ci.yml/badge.svg" alt="Build &#x26; Deploy"></a></p>
       <p>Github action generates dynamic image URL for contributor list to display it!</p>
-      <h2 id="contributors"><a class="anchor" aria-hidden="true" tabindex="-1" href="#contributors"><span class="octicon octicon-link"></span></a>Contributors</h2><a href="https://github.com/jaywcjlove/github-action-contributors/graphs/contributors"><img src="https://jaywcjlove.github.io/github-action-contributors/CONTRIBUTORS.svg"></a>
+      <h2 id="contributors"><a class="anchor" aria-hidden="true" tabindex="-1" href="#contributors"><span class="octicon octicon-link"></span></a>Contributors</h2>
+      <p>As always, thanks to our amazing contributors!</p><a href="https://github.com/jaywcjlove/github-action-contributors/graphs/contributors"><img src="https://jaywcjlove.github.io/github-action-contributors/CONTRIBUTORS.svg"></a>
+      <p>Made with <a href="https://github.com/jaywcjlove/github-action-contributors">github-action-contributors</a>.</p>
       <h2 id="usage"><a class="anchor" aria-hidden="true" tabindex="-1" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
       <pre class="language-yml"><code class="language-yml"><span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> mkdir <span class="token punctuation">-</span>p build
 <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Generate Contributors Images
@@ -56,16 +58,22 @@
       <p>Use in markdown</p>
       <pre class="language-markdown"><code class="language-markdown"><span class="token title important"><span class="token punctuation">##</span> Contributors</span>
 
+As always, thanks to our amazing contributors!
+
 <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://github.com/jaywcjlove/github-action-contributors/graphs/contributors<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://jaywcjlove.github.io/github-action-contributors/CONTRIBUTORS.svg<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>a</span><span class="token punctuation">></span></span>
 
+Made with <span class="token url">[<span class="token content">github-action-contributors</span>](<span class="token url">https://github.com/jaywcjlove/github-action-contributors</span>)</span>.
 </code><div onclick="copied(this)" data-code="## Contributors
+
+As always, thanks to our amazing contributors!
 
 <a href=&#x22;https://github.com/jaywcjlove/github-action-contributors/graphs/contributors&#x22;>
   <img src=&#x22;https://jaywcjlove.github.io/github-action-contributors/CONTRIBUTORS.svg&#x22; />
 </a>
 
+Made with [github-action-contributors](https://github.com/jaywcjlove/github-action-contributors).
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
       <h2 id="inputs"><a class="anchor" aria-hidden="true" tabindex="-1" href="#inputs"><span class="octicon octicon-link"></span></a>Inputs</h2>
       <h4 id="token"><a class="anchor" aria-hidden="true" tabindex="-1" href="#token"><span class="octicon octicon-link"></span></a><code>token</code></h4>
@@ -124,7 +132,9 @@ $ <span class="token function">npm</span> run build <span class="token comment">
 $ npm run watch # Listen compile .ts files.
 $ npm run build # compile .ts files.
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-      <h2 id="contributors-1"><a class="anchor" aria-hidden="true" tabindex="-1" href="#contributors-1"><span class="octicon octicon-link"></span></a>Contributors</h2><a href="https://github.com/jaywcjlove/github-action-contributors/graphs/contributors"><img src="https://jaywcjlove.github.io/github-action-contributors/CONTRIBUTORS.svg"></a>
+      <h2 id="contributors-1"><a class="anchor" aria-hidden="true" tabindex="-1" href="#contributors-1"><span class="octicon octicon-link"></span></a>Contributors</h2>
+      <p>As always, thanks to our amazing contributors!</p><a href="https://github.com/jaywcjlove/github-action-contributors/graphs/contributors"><img src="https://jaywcjlove.github.io/github-action-contributors/CONTRIBUTORS.svg"></a>
+      <p>Made with <a href="https://github.com/jaywcjlove/github-action-contributors">github-action-contributors</a>.</p>
       <h2 id="license"><a class="anchor" aria-hidden="true" tabindex="-1" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
       <p>Licensed under the MIT License.</p>
       <script>function copied(target, str) {
