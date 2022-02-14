@@ -111,7 +111,8 @@ class Generator {
     const octokit = getOctokit(this.token);
     const list = await octokit.request(`GET /repos/${this.owner}/${this.repo}/contributors`, {
       owner: this.owner,
-      repo: this.repo
+      repo: this.repo,
+      per_page: 100,
     });
 
     startGroup(`Request Header: \x1b[34m(GET /repos/${this.owner}/${this.repo}/contributors)\x1b[0m`);
