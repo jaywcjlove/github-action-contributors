@@ -63,14 +63,14 @@ jobs:
             - name: Generate Contributors Images
               uses: jaywcjlove/github-action-contributors@main
               with:
-                token: ${{ secrets.GITHUB_TOKEN }}
+                token: xxxxxxx
                 filter-author: renovate\[bot\]
                 output: build/CONTRIBUTORS.svg
 
             - name: Deploy
               uses: peaceiris/actions-gh-pages@v3
               with:
-                github_token: ${{ secrets.GITHUB_TOKEN }}
+                github_token: xxxxxxx
                 publish_dir: ./build
             ```
 
