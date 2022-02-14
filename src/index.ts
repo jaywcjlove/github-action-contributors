@@ -113,7 +113,11 @@ class Generator {
       owner: this.owner,
       repo: this.repo
     });
-    info(`${JSON.stringify(list, null, 2)}`);
+
+    startGroup(`Request Header: \x1b[34m(GET /repos/${this.owner}/${this.repo}/contributors)\x1b[0m`);
+    info(`${JSON.stringify(list.headers, null, 2)}`);
+    endGroup();
+
     if (list.data && list.data.length > 0) {
       list.data = (list.data as Array<Data>).filter((item) => !(new RegExp(this.options.filterAuthor)).test(item.login));
       this.data = list.data;
