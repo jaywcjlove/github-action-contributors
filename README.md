@@ -122,11 +122,10 @@ $ npm run watch # Listen compile .ts files.
 $ npm run build # compile .ts files.
 ```
 
-
 ## Related
 
 - [Generated Badges](https://github.com/jaywcjlove/generated-badges) Create a badge using GitHub Actions and GitHub Workflow CPU time (no 3rd parties servers)
-
+- [coverage-badges-cli](https://github.com/jaywcjlove/coverage-badges-cli) Create coverage badges from coverage reports.
 ## Contributors
 
 As always, thanks to our amazing contributors!
