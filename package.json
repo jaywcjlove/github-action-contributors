@@ -2,15 +2,11 @@
   "name": "github-action-contributors",
   "version": "1.0.5",
   "description": "Github action generates dynamic image URL for contributor list to display it!.",
-  "main": "./lib/index.js",
+  "private": true,
   "scripts": {
-    "prepare": "husky install && npm run package",
-    "package": "ncc build src/index.ts -o lib",
-    "start": "node lib/index.js",
-    "watch": "tsbb watch --disable-babel",
-    "build": "tsbb build --disable-babel",
-    "test": "npm run build && tsbb test",
-    "coverage": "npm run build && tsbb test --coverage --bail"
+    "prepare": "husky install && npm run build",
+    "build": "ncc build src/index.ts -o lib",
+    "watch": "ncc watch src/index.ts -o lib"
   },
   "repository": {
     "type": "git",
@@ -20,7 +16,7 @@
   "license": "MIT",
   "lint-staged": {
     "*.ts?(x)": [
-      "npm run package"
+      "npm run build"
     ]
   },
   "dependencies": {
@@ -30,9 +26,8 @@
     "image2uri": "1.1.0"
   },
   "devDependencies": {
-    "@vercel/ncc": "0.33.1",
+    "@kkt/ncc": "1.0.3",
     "husky": "7.0.4",
-    "lint-staged": "12.3.1",
-    "tsbb": "^3.5.4"
+    "lint-staged": "12.3.1"
   }
 }
