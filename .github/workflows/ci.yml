@@ -32,14 +32,14 @@ jobs:
 
       - name: Create Tag
         id: create_tag
-        uses: jaywcjlove/create-tag-action@v1.3.5
+        uses: jaywcjlove/create-tag-action@v1.3.6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           package-path: ./package.json
 
       - name: Generate Changelog
         id: changelog
-        uses: jaywcjlove/changelog-generator@v1.4.8
+        uses: jaywcjlove/changelog-generator@v1.5.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           head-ref: ${{steps.create_tag.outputs.version}}
@@ -77,3 +77,6 @@ jobs:
             <a href="https://github.com/jaywcjlove/github-action-contributors/graphs/contributors">
               <img src="https://jaywcjlove.github.io/github-action-contributors/CONTRIBUTORS.svg" />
             </a>
+
+            Document github-action-contributors@${{ steps.changelog.outputs.tag }}:  
+            https://raw.githack.com/jaywcjlove/github-action-contributors/${{ steps.changelog.outputs.gh-pages-short-hash }}/index.html
