@@ -31,18 +31,24 @@ jobs:
           output: build/CONTRIBUTORS.svg
           avatarSize: 36
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
-
       - name: Create Tag
         id: create_tag
         uses: jaywcjlove/create-tag-action@v1.3.6
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
           package-path: ./package.json
+
+      - name: get tag version
+        id: tag_version
+        uses: jaywcjlove/changelog-generator@v1.5.0
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          commit_message: ${{steps.tag_version.outputs.tag}} ${{ github.event.head_commit.message }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          publish_dir: ./build
 
       - name: Generate Changelog
         id: changelog
