@@ -20,14 +20,14 @@
     ]
   },
   "dependencies": {
-    "@actions/core": "1.6.0",
-    "@actions/github": "5.0.0",
-    "image-size": "1.0.1",
-    "image2uri": "1.1.0"
+    "@actions/core": "~1.6.0",
+    "@actions/github": "~5.0.0",
+    "image-size": "~1.0.1",
+    "image2uri": "~1.1.0"
   },
   "devDependencies": {
-    "@kkt/ncc": "1.0.3",
-    "husky": "7.0.4",
-    "lint-staged": "12.3.4"
+    "@kkt/ncc": "~1.0.12",
+    "husky": "~7.0.4",
+    "lint-staged": "~12.3.4"
   }
 }
