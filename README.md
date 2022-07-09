@@ -2,6 +2,7 @@ github-action-contributors
 ===
 
 [![Build & Deploy](https://github.com/jaywcjlove/github-action-contributors/actions/workflows/ci.yml/badge.svg)](https://github.com/jaywcjlove/github-action-contributors/actions/workflows/ci.yml)
+[![Repo Dependents](https://badgen.net/github/dependents-repo/jaywcjlove/github-action-contributors)](https://github.com/jaywcjlove/github-action-contributors/network/dependents)
 
 Github action generates dynamic image URL for contributor list to display it!
 
