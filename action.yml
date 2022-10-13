@@ -24,27 +24,27 @@ inputs:
   truncate:
     description: Truncate username by specified length, `0` for no truncate.
     required: false
-    default: 12
+    default: '12'
 
   svgWidth:
     description: Width of the generated SVG.
     required: false
-    default: 740
+    default: '740'
 
   avatarSize:
     description: Size of user avatar.
     required: false
-    default: 24
+    default: '24'
 
   avatarMargin:
     description: Margin of user avatar.
     required: false
-    default: 5
+    default: '5'
 
   userNameHeight:
     description: Height of user name.
     required: false
-    default: 0
+    default: '0'
 
   svgTemplate:
     description: Template to render SVG.
