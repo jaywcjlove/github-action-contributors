@@ -89,10 +89,10 @@ jobs:
         uses: jaywcjlove/github-action-modify-file-content@main
         with:
           path: README.md
-          openDelimiter: '<!--GAMFC_TABEL_COLLABORATORS_BOTS-->'
-          closeDelimiter: '<!--GAMFC_TABEL_COLLABORATORS_BOTS-END-->'
+          openDelimiter: '<!--GAMFC_TABEL_COLLABORATORS-->'
+          closeDelimiter: '<!--GAMFC_TABEL_COLLABORATORS-END-->'
           body: |
-            ${{steps.contributor_table.outputs.htmlTableBots}}
+            ${{steps.contributor_table.outputs.htmlCollaboratorsTable}}
 
       - name: Create Tag
         id: create_tag

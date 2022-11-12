@@ -46,20 +46,7 @@ Bot Users:
 
 Collaborators Users:
 
-<!--GAMFC_TABEL_COLLABORATORS_BOTS--><table><tr>
-  <td align="center">
-    <a href="https://github.com/github-actions[bot]">
-      <img src="https://avatars.githubusercontent.com/in/15368?v=4" width="100;" alt="github-actions[bot]"/>
-    <br /><sub><b>github-actions[bot]</b></sub>
-    </a>
-  </td>
-  <td align="center">
-    <a href="https://github.com/renovate[bot]">
-      <img src="https://avatars.githubusercontent.com/in/2740?v=4" width="100;" alt="renovate[bot]"/>
-    <br /><sub><b>renovate[bot]</b></sub>
-    </a>
-  </td>
-</tr></table><!--GAMFC_TABEL_COLLABORATORS_BOTS-END-->
+<!--GAMFC_TABEL_COLLABORATORS--><!--GAMFC_TABEL_COLLABORATORS-END-->
 
 Write contributors(**`htmlList`**) to markdown Example:
 

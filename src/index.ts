@@ -262,7 +262,7 @@ class Generator {
     setOutput('htmlCollaboratorsList', htmlCollaboratorsList)
 
     /** Collaborators Bots */
-    const { htmlList: htmlCollaboratorsListBots, htmlTable: htmlCollaboratorsTableBots, colCount: collaboratorsColCountBots  } = await this.getHTMLStr(this.dataBot);
+    const { htmlList: htmlCollaboratorsListBots, htmlTable: htmlCollaboratorsTableBots, colCount: collaboratorsColCountBots  } = await this.getHTMLStr(this.dataBotCollaborators);
     startGroup(`Collaborators Bots: \x1b[34m(htmlCollaboratorsListBots)\x1b[0m ${collaboratorsColCountBots}`);
     info(`${htmlCollaboratorsListBots}`);
     endGroup();
