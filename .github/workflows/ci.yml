@@ -45,8 +45,8 @@ jobs:
         uses: jaywcjlove/github-action-modify-file-content@main
         with:
           path: README.md
-          openDelimiter: '<!--GAMFC-TABEL-->'
-          closeDelimiter: '<!--GAMFC-TABEL-END-->'
+          openDelimiter: '<!--GAMFC_TABEL-->'
+          closeDelimiter: '<!--GAMFC_TABEL-END-->'
           body: |
             ${{steps.contributors.outputs.htmlTable}}
 

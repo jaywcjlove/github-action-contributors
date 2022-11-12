@@ -16,7 +16,7 @@ As always, thanks to our amazing contributors!
 
 Write contributors(**`htmlTable`**) to markdown Example:
 
-<!--GAMFC-TABEL--><table><tr>
+<!--GAMFC_TABEL--><table><tr>
   <td align="center">
     <a href="https://github.com/jaywcjlove">
     <img src="https://avatars.githubusercontent.com/u/1680273?v=4" width="36;" alt="jaywcjlove"/><br />
@@ -29,7 +29,7 @@ Write contributors(**`htmlTable`**) to markdown Example:
     <sub><b>github-actions[bot]</b></sub>
     </a>
   </td>
-</tr></table><!--GAMFC-TABEL-END-->
+</tr></table><!--GAMFC_TABEL-END-->
 
 
 Write contributors(**`htmlList`**) to markdown Example:
