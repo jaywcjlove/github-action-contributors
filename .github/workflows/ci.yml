@@ -41,6 +41,13 @@ jobs:
           hideName: 'true'
           avatarSize: 100
 
+      - name: Generate Contributors Images
+        id: contributor_table
+        uses: ./
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          avatarSize: 100
+
       - name: Modify README.md
         uses: jaywcjlove/github-action-modify-file-content@main
         with:
@@ -67,7 +74,7 @@ jobs:
           openDelimiter: '<!--GAMFC_TABEL-->'
           closeDelimiter: '<!--GAMFC_TABEL-END-->'
           body: |
-            ${{steps.contributors.outputs.htmlTable}}
+            ${{steps.contributor_table.outputs.htmlTable}}
 
       - name: Create Tag
         id: create_tag
