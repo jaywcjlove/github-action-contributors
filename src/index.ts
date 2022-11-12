@@ -154,8 +154,12 @@ class Generator {
       htmlList += `  <img src="${item.avatar_url}" width="${this.options.avatarSize};" alt="${item.name || item.login}"/>\n`;
       htmlList += `</a>\n`;
     });
-    htmlTable += `</tr></table>\n`;
+    htmlTable += `</tr></table>\n\n`;
     htmlList += '\n';
+    if (this.data?.length === 0) {
+      htmlTable = '';
+      htmlList = '';
+    }
     startGroup(`Request response : \x1b[34m(htmlTable)\x1b[0m ${colCount}`);
     info(`${htmlTable}`);
     endGroup();
