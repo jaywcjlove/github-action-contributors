@@ -117,6 +117,21 @@ Made with [contributors](https://github.com/jaywcjlove/github-action-contributor
 - `htmlTable` Contributor HTML \<Table> form string
 - `htmlList` Contributor HTML \<a> list form string
 
+### `htmlTable`
+
+```html
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/jaywcjlove">
+        <img src="https://avatars.githubusercontent.com/u/1680273?v=4" width="36;" alt="jaywcjlove"/><br />
+        <sub><b>jaywcjlove</b></sub>
+        </a>
+    </td>
+  </tr>
+</table>
+```
+
 ## Quick Start
 
 ```shell

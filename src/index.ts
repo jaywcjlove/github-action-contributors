@@ -137,7 +137,7 @@ class Generator {
     let htmlTable = `<table><tr>`;
     let htmlList = ``;
     this.data.forEach((item, idx) => {
-      if (colCount > idx + 1) {
+      if (idx + 1 % colCount === 0) {
         htmlTable += `  </tr><tr>`;
       }
       htmlTable += `  <td align="center">`;
@@ -152,8 +152,8 @@ class Generator {
       htmlList += `  <sub><b>${item.login}</b></sub>`;
       htmlList += `</a>`;
     });
-    htmlTable += `</table></tr>`;
-    startGroup(`Request response : \x1b[34m(htmlTable)\x1b[0m`);
+    htmlTable += `</tr></table>`;
+    startGroup(`Request response : \x1b[34m(htmlTable)\x1b[0m ${colCount}`);
     info(`${htmlTable}`);
     endGroup();
 
