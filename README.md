@@ -35,13 +35,9 @@ Write contributors(**`htmlTable`**) to markdown Example:
 Write contributors(**`htmlList`**) to markdown Example:
 
 <!--GAMFC--><a href="https://github.com/jaywcjlove">
-  <img src="https://avatars.githubusercontent.com/u/1680273?v=4" width="36;" alt="jaywcjlove"/><br />
-  <sub><b>jaywcjlove</b></sub>
-</a>
+  <img src="https://avatars.githubusercontent.com/u/1680273?v=4" width="36;" alt="jaywcjlove"/></a>
 <a href="https://github.com/github-actions[bot]">
-  <img src="https://avatars.githubusercontent.com/in/15368?v=4" width="36;" alt="github-actions[bot]"/><br />
-  <sub><b>github-actions[bot]</b></sub>
-</a><!--GAMFC-END-->
+  <img src="https://avatars.githubusercontent.com/in/15368?v=4" width="36;" alt="github-actions[bot]"/></a><!--GAMFC-END-->
 
 ## Usage
 
@@ -108,13 +104,9 @@ Use in `README.md` markdown
 As always, thanks to our amazing contributors!
 
 <!--GAMFC--><a href="https://github.com/jaywcjlove">
-  <img src="https://avatars.githubusercontent.com/u/1680273?v=4" width="36;" alt="jaywcjlove"/><br />
-  <sub><b>jaywcjlove</b></sub>
-</a>
+  <img src="https://avatars.githubusercontent.com/u/1680273?v=4" width="36;" alt="jaywcjlove"/></a>
 <a href="https://github.com/github-actions[bot]">
-  <img src="https://avatars.githubusercontent.com/in/15368?v=4" width="36;" alt="github-actions[bot]"/><br />
-  <sub><b>github-actions[bot]</b></sub>
-</a><!--GAMFC-END-->
+  <img src="https://avatars.githubusercontent.com/in/15368?v=4" width="36;" alt="github-actions[bot]"/></a><!--GAMFC-END-->
 
 Made with [contributors](https://github.com/jaywcjlove/github-action-contributors).
 ```
