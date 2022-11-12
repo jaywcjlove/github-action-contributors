@@ -20,7 +20,7 @@ export function getInputs() {
     count: Number.isNaN(count) ? null : count,
     hideName: getInput('hideName') === 'true',
     excludeBots: getInput('excludeBots') === 'true',
-    affiliation: getInput('affiliation') as 'all' | 'direct' | 'outside',
+    collaborators: getInput('collaborators') as 'all' | 'direct' | 'outside',
     svgTemplate: getInput('svgTemplate'),
     filterAuthor: getInput('filter-author'),
     svgPath: getInput('output') || './contributors.svg',
@@ -64,6 +64,7 @@ function getItemBBox(index: number, options: ReturnType<typeof getInputs>) {
 }
 
 type UserData = Endpoints["GET /repos/{owner}/{repo}/contributors"]['response']['data'][number]
+type CollaboratorsUserData = Endpoints["GET /repos/{owner}/{repo}/collaborators"]['response']['data'][number]
 
 class Generator {
   options: ReturnType<typeof getInputs>;
@@ -73,6 +74,8 @@ class Generator {
   svg: string;
   data: UserData[] = [];
   dataBot: UserData[] = [];
+  dataCollaborators: CollaboratorsUserData[] = [];
+  dataBotCollaborators: CollaboratorsUserData[] = [];
   constructor() {
     const { owner, repo } = context.repo;
     if (!repo) {
@@ -111,12 +114,16 @@ class Generator {
   }
   async getContributors() {
     const octokit = getOctokit(this.token);
+    /**
+     * contributors of the repo
+     * https://docs.github.com/cn/rest/repos/repos#list-repository-contributors
+     */
     const list = await octokit.paginate(octokit.rest.repos.listContributors, {
       owner: this.owner,
       repo: this.repo,
     })
 
-    startGroup(`Request UserInfo: \x1b[34m(GET /repos/${this.owner}/${this.repo}/contributors)\x1b[0m`);
+    startGroup(`UserInfo: \x1b[34m(GET /repos/${this.owner}/${this.repo}/contributors)\x1b[0m`);
     list.forEach((userInfoDetail) => {
       info(`${JSON.stringify(userInfoDetail, null, 2)}`);
     })
@@ -135,7 +142,37 @@ class Generator {
         this.data = userData;
       }
     }
-    return list
+
+    /**
+     * collaborators of the repo
+     * https://docs.github.com/cn/rest/collaborators/collaborators
+     */
+    const collaboratorsList = await octokit.paginate(octokit.rest.repos.listCollaborators, {
+      owner: this.owner,
+      repo: this.repo,
+      affiliation: this.options.collaborators
+    });
+
+    startGroup(`Collaborators UserInfo: \x1b[34m(GET /repos/${this.owner}/${this.repo}/collaborators)\x1b[0m`);
+    collaboratorsList.forEach((userInfoDetail) => {
+      info(`${JSON.stringify(userInfoDetail, null, 2)}`);
+    })
+    endGroup();
+
+    if (collaboratorsList && collaboratorsList.length > 0) {
+      let userData: CollaboratorsUserData[] = []
+      collaboratorsList.filter(el => el.type === 'Bot' || el.login.includes('actions-user')).forEach((item) => this.dataBotCollaborators.push(item));
+      if (this.options.filterAuthor) {
+        userData = collaboratorsList.filter((item) => !(new RegExp(this.options.filterAuthor)).test(item.login));
+      }
+      if (this.options.excludeBots) {
+        userData = collaboratorsList.filter(el => el.type !== 'Bot' && !el.login.includes('actions-user'))
+      }
+      if (Array.isArray(this.data)) {
+        this.dataCollaborators = userData;
+      }
+    }
+
   }
   async generator() {
     const avatar = await Promise.all(this.data.map(async (item, idx) => {
@@ -155,7 +192,7 @@ class Generator {
     setOutput('svg', this.svg)
     return this.svg;
   }
-  async getHTMLStr(data: UserData[]) {
+  async getHTMLStr(data: (UserData | CollaboratorsUserData)[]) {
     const colCount = getColCount(this.options);
     let htmlTable = `\n<table><tr>\n`;
     let htmlList = `\n`;
@@ -188,6 +225,7 @@ class Generator {
     return { htmlList, htmlTable, colCount }
   }
   async outputMarkdown() {
+    /** Contributors */
     const { htmlList, htmlTable, colCount  } = await this.getHTMLStr(this.data)
     startGroup(`Contributors : \x1b[34m(htmlTable)\x1b[0m ${colCount}`);
     info(`${htmlTable}`);
@@ -199,16 +237,41 @@ class Generator {
     endGroup();
     setOutput('htmlList', htmlList)
 
-    const { htmlList: htmlListBots, htmlTable: htmlTableBots  } = await this.getHTMLStr(this.dataBot);
-    startGroup(`Contributors : \x1b[34m(htmlListBots)\x1b[0m ${colCount}`);
+    /** Contributors Bots */
+    const { htmlList: htmlListBots, htmlTable: htmlTableBots, colCount: colCountBots  } = await this.getHTMLStr(this.dataBot);
+    startGroup(`Contributors Bots: \x1b[34m(htmlListBots)\x1b[0m ${colCountBots}`);
     info(`${htmlListBots}`);
     endGroup();
     setOutput('htmlListBots', htmlListBots)
 
-    startGroup(`Contributors : \x1b[34m(htmlTableBots)\x1b[0m`);
+    startGroup(`Contributors Bots: \x1b[34m(htmlTableBots)\x1b[0m`);
     info(`${htmlTableBots}`);
     endGroup();
     setOutput('htmlTableBots', htmlTableBots)
+
+    /** Collaborators */
+    const { htmlList: htmlCollaboratorsList, htmlTable: htmlCollaboratorsTable, colCount: collaboratorsColCount  } = await this.getHTMLStr(this.dataCollaborators)
+    startGroup(`Collaborators : \x1b[34m(htmlCollaboratorsTable)\x1b[0m ${collaboratorsColCount}`);
+    info(`${htmlCollaboratorsTable}`);
+    endGroup();
+    setOutput('htmlCollaboratorsTable', htmlCollaboratorsTable)
+
+    startGroup(`Collaborators : \x1b[34m(htmlCollaboratorsList)\x1b[0m`);
+    info(`${htmlCollaboratorsList}`);
+    endGroup();
+    setOutput('htmlCollaboratorsList', htmlCollaboratorsList)
+
+    /** Collaborators Bots */
+    const { htmlList: htmlCollaboratorsListBots, htmlTable: htmlCollaboratorsTableBots, colCount: collaboratorsColCountBots  } = await this.getHTMLStr(this.dataBot);
+    startGroup(`Collaborators Bots: \x1b[34m(htmlCollaboratorsListBots)\x1b[0m ${collaboratorsColCountBots}`);
+    info(`${htmlCollaboratorsListBots}`);
+    endGroup();
+    setOutput('htmlCollaboratorsListBots', htmlCollaboratorsListBots)
+
+    startGroup(`Collaborators Bots: \x1b[34m(htmlCollaboratorsTableBots)\x1b[0m`);
+    info(`${htmlCollaboratorsTableBots}`);
+    endGroup();
+    setOutput('htmlCollaboratorsTableBots', htmlCollaboratorsTableBots)
   }
   async writeFile() {
     if (this.options.svgPath) {

@@ -6,6 +6,8 @@ github-action-contributors
 
 Github action generates dynamic image URL for contributor list to display it!
 
+The contributors list is fetched from [GitHub API](https://docs.github.com/cn/rest/repos/repos#list-repository-contributors).
+
 ## Contributors
 
 As always, thanks to our amazing contributors!
@@ -214,6 +216,10 @@ Bot Users:
 - `htmlTableBots` Contributor(Bot Users) HTML \<Table> form string
 - `htmlList` Contributor HTML \<a> list form string
 - `htmlListBots` Contributor(Bot Users) HTML \<a> list form string
+- `htmlCollaboratorsTable` Collaborators user HTML <Table> form string
+- `htmlCollaboratorsTableBots` Collaborators user(Bot Users) HTML <Table> form string
+- `htmlCollaboratorsList` Collaborators user HTML <a> list form string
+- `htmlCollaboratorsListBots` Collaborators user(Bot Users) HTML <a> form string
 
 ### `htmlTable`
 

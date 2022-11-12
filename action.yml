@@ -82,6 +82,14 @@ outputs:
     description: 'Contributor HTML <a> list form string'
   htmlListBots:
     description: 'Contributor(Bot Users) HTML <a> form string'
+  htmlCollaboratorsTable:
+    description: 'Collaborators user HTML <Table> form string'
+  htmlCollaboratorsTableBots:
+    description: 'Collaborators user(Bot Users) HTML <Table> form string'
+  htmlCollaboratorsList:
+    description: 'Collaborators user HTML <a> list form string'
+  htmlCollaboratorsListBots:
+    description: 'Collaborators user(Bot Users) HTML <a> form string'
 runs:
   using: 'node16'
   main: 'lib/index.js'
