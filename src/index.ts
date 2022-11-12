@@ -204,7 +204,7 @@ class Generator {
       const { name } = await this.getUserInfo(item.login);
       const nikename = name || item.name || item.login;
       htmlTable += `  <td align="center">\n`;
-      htmlTable += `    <a href="https://github.com/${item.login}">\n`;
+      htmlTable += `    <a href="https://github.com/${item.login}" title="${nikename}">\n`;
       htmlTable += `      <img src="${item.avatar_url}" width="${this.options.avatarSize};" alt="${nikename}"/>\n`;
       if (!this.options.hideName) {
         htmlTable += `    <br /><sub><b>${nikename}</b></sub>\n`;
@@ -212,7 +212,7 @@ class Generator {
       htmlTable += `    </a>\n`;
       htmlTable += `  </td>\n`;
 
-      htmlList += `<a href="https://github.com/${item.login}">\n`;
+      htmlList += `<a href="https://github.com/${item.login}" title="${nikename}">\n`;
       htmlList += `  <img src="${item.avatar_url}" width="${this.options.avatarSize};" alt="${nikename}"/>\n`;
       htmlList += `</a>\n`;
     }
