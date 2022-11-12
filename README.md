@@ -132,23 +132,8 @@ Write contributors(**`htmlList`**) to markdown Example:
   id: contributors
   with:
     filter-author: (renovate\[bot\]|renovate-bot|dependabot\[bot\])
-    openDelimiter: '<!--GAMFC_TABEL_HIDE_NAME--><table><tr>
-  <td align="center">
-    <a href="https://github.com/jaywcjlove">
-      <img src="https://avatars.githubusercontent.com/u/1680273?v=4" width="100;" alt="jaywcjlove"/>
-    </a>
-  </td>
-  <td align="center">
-    <a href="https://github.com/github-actions[bot]">
-      <img src="https://avatars.githubusercontent.com/in/15368?v=4" width="100;" alt="github-actions[bot]"/>
-    </a>
-  </td>
-  <td align="center">
-    <a href="https://github.com/renovate[bot]">
-      <img src="https://avatars.githubusercontent.com/in/2740?v=4" width="100;" alt="renovate[bot]"/>
-    </a>
-  </td>
-</tr></table><!--GAMFC_TABEL_HIDE_NAME-END-->'
+    openDelimiter: '<!--GAMFC_DELIMITER-->'
+    closeDelimiter: '<!--GAMFC_DELIMITER-END-->'
     hideName: 'true' # Hide names in htmlTable
     avatarSize: 100  # Set the avatar size.
 
@@ -166,23 +151,7 @@ Use in `README.md` markdown
 
 As always, thanks to our amazing contributors!
 
-<!--GAMFC_TABEL_HIDE_NAME--><table><tr>
-  <td align="center">
-    <a href="https://github.com/jaywcjlove">
-      <img src="https://avatars.githubusercontent.com/u/1680273?v=4" width="100;" alt="jaywcjlove"/>
-    </a>
-  </td>
-  <td align="center">
-    <a href="https://github.com/github-actions[bot]">
-      <img src="https://avatars.githubusercontent.com/in/15368?v=4" width="100;" alt="github-actions[bot]"/>
-    </a>
-  </td>
-  <td align="center">
-    <a href="https://github.com/renovate[bot]">
-      <img src="https://avatars.githubusercontent.com/in/2740?v=4" width="100;" alt="renovate[bot]"/>
-    </a>
-  </td>
-</tr></table><!--GAMFC_TABEL_HIDE_NAME-END-->
+<!--GAMFC_DELIMITER-->will be replaced here<!--GAMFC_DELIMITER-END-->
 
 Made with [contributors](https://github.com/jaywcjlove/github-action-contributors).
 ```
