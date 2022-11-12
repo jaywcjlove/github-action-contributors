@@ -164,16 +164,6 @@ Write contributors(**`htmlTable`**) to markdown Example:
       <img src="https://avatars.githubusercontent.com/u/1680273?v=4" width="100;" alt="jaywcjlove"/>
     </a>
   </td>
-  <td align="center">
-    <a href="https://github.com/github-actions[bot]">
-      <img src="https://avatars.githubusercontent.com/in/15368?v=4" width="100;" alt="github-actions[bot]"/>
-    </a>
-  </td>
-  <td align="center">
-    <a href="https://github.com/renovate[bot]">
-      <img src="https://avatars.githubusercontent.com/in/2740?v=4" width="100;" alt="renovate[bot]"/>
-    </a>
-  </td>
 </tr></table><!--GAMFC_TABEL_HIDE_NAME-END-->
 
 Bot Users:
