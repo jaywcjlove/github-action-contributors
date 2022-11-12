@@ -256,9 +256,11 @@ $ npm run build # compile .ts files.
 
 As always, thanks to our amazing contributors!
 
+<!--GAMFC-->
 <a href="https://github.com/jaywcjlove/github-action-contributors/graphs/contributors">
   <img src="https://jaywcjlove.github.io/github-action-contributors/CONTRIBUTORS.svg" />
 </a>
+<!--GAMFC-END-->
 
 Made with [contributors](https://github.com/jaywcjlove/github-action-contributors).
 
