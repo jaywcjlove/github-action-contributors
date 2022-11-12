@@ -18,7 +18,7 @@ Made with [contributors](https://github.com/jaywcjlove/github-action-contributor
 
 Write contributors to markdown Example:
 
-<!--GAMFC--><!--GAMFC-END-->
+<!--GAMFC-->\n<table><tr>  </tr><tr>  <td align="center">    <a href="https://github.com/jaywcjlove">    <img src="https://avatars.githubusercontent.com/u/1680273?v=4" width="36;" alt="jaywcjlove"/><br />    <sub><b>jaywcjlove</b></sub>    </a>  </td>  </tr><tr>  <td align="center">    <a href="https://github.com/github-actions[bot]">    <img src="https://avatars.githubusercontent.com/in/15368?v=4" width="36;" alt="github-actions[bot]"/><br />    <sub><b>github-actions[bot]</b></sub>    </a>  </td></table></tr>\n<!--GAMFC-END-->
 
 ## Usage
 
@@ -80,7 +80,7 @@ Use in `README.md` markdown
 
 As always, thanks to our amazing contributors!
 
-<!--GAMFC-->\n<table><tr>ss</tr><tr>ss<td align="center">ssss<a href="https://github.com/jaywcjlove">ssss<img src="https://avatars.githubusercontent.com/u/1680273?v=4" width="36;" alt="jaywcjlove"/><br />ssss<sub><b>jaywcjlove</b></sub>ssss</a>ss</td></table></tr>\n<!--GAMFC-END-->
+<!--GAMFC-->\n<table><tr>  </tr><tr>  <td align="center">    <a href="https://github.com/jaywcjlove">    <img src="https://avatars.githubusercontent.com/u/1680273?v=4" width="36;" alt="jaywcjlove"/><br />    <sub><b>jaywcjlove</b></sub>    </a>  </td>  </tr><tr>  <td align="center">    <a href="https://github.com/github-actions[bot]">    <img src="https://avatars.githubusercontent.com/in/15368?v=4" width="36;" alt="github-actions[bot]"/><br />    <sub><b>github-actions[bot]</b></sub>    </a>  </td></table></tr>\n<!--GAMFC-END-->
 
 Made with [contributors](https://github.com/jaywcjlove/github-action-contributors).
 ```
