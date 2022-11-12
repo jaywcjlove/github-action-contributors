@@ -256,11 +256,12 @@ $ npm run build # compile .ts files.
 
 As always, thanks to our amazing contributors!
 
-<!--GAMFC-->
-<a href="https://github.com/jaywcjlove/github-action-contributors/graphs/contributors">
-  <img src="https://jaywcjlove.github.io/github-action-contributors/CONTRIBUTORS.svg" />
+<!--GAMFC--><a href="https://github.com/jaywcjlove">
+  <img src="https://avatars.githubusercontent.com/u/1680273?v=4" width="36;" alt="jaywcjlove"/>
 </a>
-<!--GAMFC-END-->
+<a href="https://github.com/github-actions[bot]">
+  <img src="https://avatars.githubusercontent.com/in/15368?v=4" width="36;" alt="github-actions[bot]"/>
+</a><!--GAMFC-END-->
 
 Made with [contributors](https://github.com/jaywcjlove/github-action-contributors).
 
