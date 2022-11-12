@@ -18,8 +18,7 @@ Made with [contributors](https://github.com/jaywcjlove/github-action-contributor
 
 Write contributors to markdown Example:
 
-<!--GAMFC-->
-<!--GAMFC-END-->
+<!--GAMFC--><!--GAMFC-END-->
 
 ## Usage
 
@@ -134,17 +133,6 @@ $ npm run build # compile .ts files.
 - [Create Coverage Badges](https://github.com/jaywcjlove/coverage-badges-cli) Create coverage badges from coverage reports. (no 3rd parties servers)
 - [Create Coverage Package](https://github.com/jaywcjlove/github-action-packag) Read and modify the contents of `package.json`.
 - [Generated Badges](https://github.com/jaywcjlove/generated-badges) Create a badge using GitHub Actions and GitHub Workflow CPU time (no 3rd parties servers)
-
-
-
-        <a href="https://github.com/akhilmhdh">
-            <img src="https://avatars.githubusercontent.com/u/31166322?v=4" width="100;" alt="akhilmhdh"/>
-            <br />
-            <sub><b>Akhil Mohan</b></sub>
-        </a>
-
-:- | :-
-:- | :-
 
 ## Contributors
 

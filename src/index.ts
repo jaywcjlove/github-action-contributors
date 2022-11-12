@@ -138,18 +138,18 @@ class Generator {
     let htmlList = ``;
     this.data.forEach((item, idx) => {
       if (colCount > idx + 1) {
-        htmlTable += `\s\s</tr><tr>`;
+        htmlTable += `  </tr><tr>`;
       }
-      htmlTable += `\s\s<td align="center">`;
-      htmlTable += `\s\s\s\s<a href="https://github.com/${item.login}">`;
-      htmlTable += `\s\s\s\s<img src="${item.avatar_url}" width="${this.options.avatarSize};" alt="${item.name || item.login}"/><br />`;
-      htmlTable += `\s\s\s\s<sub><b>${item.login}</b></sub>`;
-      htmlTable += `\s\s\s\s</a>`;
-      htmlTable += `\s\s</td>`;
+      htmlTable += `  <td align="center">`;
+      htmlTable += `    <a href="https://github.com/${item.login}">`;
+      htmlTable += `    <img src="${item.avatar_url}" width="${this.options.avatarSize};" alt="${item.name || item.login}"/><br />`;
+      htmlTable += `    <sub><b>${item.login}</b></sub>`;
+      htmlTable += `    </a>`;
+      htmlTable += `  </td>`;
 
       htmlList += `<a href="https://github.com/${item.login}">`;
-      htmlList += `\s\s<img src="${item.avatar_url}" width="${this.options.avatarSize};" alt="${item.name || item.login}"/><br />`;
-      htmlList += `\s\s<sub><b>${item.login}</b></sub>`;
+      htmlList += `  <img src="${item.avatar_url}" width="${this.options.avatarSize};" alt="${item.name || item.login}"/><br />`;
+      htmlList += `  <sub><b>${item.login}</b></sub>`;
       htmlList += `</a>`;
     });
     htmlTable += `</table></tr>`;
