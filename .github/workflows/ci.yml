@@ -38,7 +38,8 @@ jobs:
         uses: jaywcjlove/github-action-modify-file-content@main
         with:
           path: README.md
-          body: '\n${{steps.contributors.outputs.htmlList}}\n'
+          body: |
+            ${{steps.contributors.outputs.htmlList}}
 
       - name: Create Tag
         id: create_tag
