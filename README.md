@@ -199,7 +199,7 @@ As always, thanks to our amazing contributors!
   <img src="https://jaywcjlove.github.io/github-action-contributors/CONTRIBUTORS.svg" />
 </a>
 
-Made with [action-contributors](https://github.com/jaywcjlove/github-action-contributors).
+Made with [contributors](https://github.com/jaywcjlove/github-action-contributors).
 
 ## License
 
