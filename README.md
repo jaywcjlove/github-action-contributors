@@ -37,6 +37,9 @@ Write contributors(**`htmlTable`**) to markdown Example:
   </td>
 </tr></table><!--GAMFC_TABEL-END-->
 
+Bot Users:
+
+<!--GAMFC_TABEL_HIDE_NAME_BOTS--><!--GAMFC_TABEL_HIDE_NAME_BOTS-END-->
 
 Write contributors(**`htmlList`**) to markdown Example:
 
@@ -181,6 +184,10 @@ Write contributors(**`htmlTable`**) to markdown Example:
     </a>
   </td>
 </tr></table><!--GAMFC_TABEL_HIDE_NAME-END-->
+
+Bot Users:
+
+<!--GAMFC_TABEL_HIDE_NAME_BOTS--><!--GAMFC_TABEL_HIDE_NAME_BOTS-END-->
 
 ## Inputs
 

@@ -71,6 +71,15 @@ jobs:
         uses: jaywcjlove/github-action-modify-file-content@main
         with:
           path: README.md
+          openDelimiter: '<!--GAMFC_TABEL_HIDE_NAME_BOTS-->'
+          closeDelimiter: '<!--GAMFC_TABEL_HIDE_NAME_BOTS-END-->'
+          body: |
+            ${{steps.contributor_name.outputs.htmlTableBots}}
+
+      - name: Modify README.md
+        uses: jaywcjlove/github-action-modify-file-content@main
+        with:
+          path: README.md
           openDelimiter: '<!--GAMFC_TABEL-->'
           closeDelimiter: '<!--GAMFC_TABEL-END-->'
           body: |

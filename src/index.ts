@@ -15,7 +15,7 @@ export function getInputs() {
   return {
     count: Number.isNaN(count) ? null : count,
     hideName: getInput('hideName') === 'true',
-    includeBots: getInput('includeBots') === 'true',
+    excludeBots: getInput('excludeBots') === 'true',
     affiliation: getInput('affiliation') as 'all' | 'direct' | 'outside',
     svgTemplate: getInput('svgTemplate'),
     filterAuthor: getInput('filter-author'),
@@ -68,6 +68,7 @@ class Generator {
   repo: string;
   svg: string;
   data: UserData[] = [];
+  dataBot: UserData[] = [];
   constructor() {
     const { owner, repo } = context.repo;
     if (!repo) {
@@ -108,8 +109,12 @@ class Generator {
     endGroup();
 
     if (list && list.length > 0) {
+      list.filter(el => el.type === 'Bot' || el.login.includes('actions-user')).forEach((item) => this.dataBot.push(item));
       if (this.options.filterAuthor) {
         list = list.filter((item) => !(new RegExp(this.options.filterAuthor)).test(item.login));
+      }
+      if (this.options.excludeBots) {
+        list = list.filter(el => el.type !== 'Bot' && !el.login.includes('actions-user'))
       }
       if (Array.isArray(this.data)) {
         this.data = list;
@@ -135,11 +140,11 @@ class Generator {
     setOutput('svg', this.svg)
     return this.svg;
   }
-  outputMarkdown() {
+  getHTMLStr(data: UserData[]) {
     const colCount = getColCount(this.options);
     let htmlTable = `\n<table><tr>\n`;
     let htmlList = `\n`;
-    this.data.forEach((item, idx) => {
+    data.forEach((item, idx) => {
       if (idx + 1 % colCount === 0) {
         htmlTable += `  </tr><tr>\n`;
       }
@@ -158,20 +163,34 @@ class Generator {
     });
     htmlTable += `</tr></table>\n\n`;
     htmlList += '\n';
-    if (this.data?.length === 0) {
+    if (data?.length === 0) {
       htmlTable = '';
       htmlList = '';
     }
-    startGroup(`Request response : \x1b[34m(htmlTable)\x1b[0m ${colCount}`);
+    return { htmlList, htmlTable, colCount }
+  }
+  outputMarkdown() {
+    const { htmlList, htmlTable, colCount  } = this.getHTMLStr(this.data)
+    startGroup(`Contributors : \x1b[34m(htmlTable)\x1b[0m ${colCount}`);
     info(`${htmlTable}`);
     endGroup();
-
     setOutput('htmlTable', htmlTable)
 
-    startGroup(`Request response : \x1b[34m(htmlList)\x1b[0m`);
+    startGroup(`Contributors : \x1b[34m(htmlList)\x1b[0m`);
     info(`${htmlList}`);
     endGroup();
     setOutput('htmlList', htmlList)
+
+    const { htmlList: htmlListBots, htmlTable: htmlTableBots  } = this.getHTMLStr(this.dataBot);
+    startGroup(`Contributors : \x1b[34m(htmlListBots)\x1b[0m ${colCount}`);
+    info(`${htmlListBots}`);
+    endGroup();
+    setOutput('htmlListBots', htmlListBots)
+
+    startGroup(`Contributors : \x1b[34m(htmlTableBots)\x1b[0m`);
+    info(`${htmlTableBots}`);
+    endGroup();
+    setOutput('htmlTableBots', htmlTableBots)
   }
   async writeFile() {
     if (this.options.svgPath) {

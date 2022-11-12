@@ -30,6 +30,11 @@ inputs:
     description: Hide names in `htmlTable`
     required: false
 
+  excludeBots:
+    description: Exclude bots users
+    default: 'true'
+    required: false
+
   svgWidth:
     description: Width of the generated SVG.
     required: false
@@ -71,8 +76,12 @@ outputs:
     description: 'svg image string'
   htmlTable:
     description: 'Contributor HTML <Table> form string'
+  htmlTableBots:
+    description: 'Contributor(Bot Users) HTML <Table> form string'
   htmlList:
     description: 'Contributor HTML <a> list form string'
+  htmlListBots:
+    description: 'Contributor(Bot Users) HTML <Table> form string'
 runs:
   using: 'node16'
   main: 'lib/index.js'
