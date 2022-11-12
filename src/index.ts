@@ -162,7 +162,7 @@ class Generator {
     startGroup(`Request response : \x1b[34m(htmlList)\x1b[0m`);
     info(`${htmlList}`);
     endGroup();
-    setOutput('htmlList', htmlTable)
+    setOutput('htmlList', htmlList)
   }
   async writeFile() {
     if (this.options.svgPath) {
