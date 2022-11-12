@@ -124,6 +124,42 @@ Write contributors(**`htmlList`**) to markdown Example:
   <img src="https://avatars.githubusercontent.com/in/15368?v=4" width="36;" alt="github-actions[bot]"/>
 </a><!--GAMFC-END-->
 
+### Write contributors(**`htmlTable`**) to markdown
+
+```yml
+- name: Generate Contributors Images
+  uses: jaywcjlove/github-action-contributors@main
+  id: contributors
+  with:
+    filter-author: (renovate\[bot\]|renovate-bot|dependabot\[bot\])
+    openDelimiter: '<!--GAMFC_TABEL_HIDE_NAME-->'
+    closeDelimiter: '<!--GAMFC_TABEL_HIDE_NAME-END-->'
+    hideName: 'true' # Hide names in htmlTable
+    avatarSize: 100  # Set the avatar size.
+
+- name: Modify htmlTable README.md
+  uses: jaywcjlove/github-action-modify-file-content@main
+  with:
+    path: README.md
+    body: '${{steps.contributors.outputs.htmlTable}}'
+```
+
+Use in `README.md` markdown
+
+```markdown
+## Contributors
+
+As always, thanks to our amazing contributors!
+
+<!--GAMFC_TABEL_HIDE_NAME--><!--GAMFC_TABEL_HIDE_NAME-END-->
+
+Made with [contributors](https://github.com/jaywcjlove/github-action-contributors).
+```
+
+Write contributors(**`htmlTable`**) to markdown Example:
+
+<!--GAMFC_TABEL_HIDE_NAME--><!--GAMFC_TABEL_HIDE_NAME-END-->
+
 ## Inputs
 
 - `token` - Your `GITHUB_TOKEN`. This is required. Why do we need `token`? Read more here: [About the GITHUB_TOKEN secret](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/authenticating-with-the-github_token#about-the-github_token-secret). Default: `${{ github.token }}`
@@ -134,6 +170,7 @@ Write contributors(**`htmlList`**) to markdown Example:
 - `svgWidth` - Width of the generated SVG. default: `740`
 - `avatarSize` - Size of user avatar. default: `24`
 - `avatarMargin` - Margin of user avatar. default: `5`
+- `hideName` - Hide names in `htmlTable`
 - `userNameHeight` - Height of user name. default: `0`
 - `svgTemplate` - Template to render SVG.
 

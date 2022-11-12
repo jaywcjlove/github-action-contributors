@@ -14,6 +14,7 @@ export function getInputs() {
   const userNameHeight = parseInt(getInput('userNameHeight'), 10)
   return {
     count: Number.isNaN(count) ? null : count,
+    hideName: getInput('hideName') === 'true',
     includeBots: getInput('includeBots') === 'true',
     affiliation: getInput('affiliation') as 'all' | 'direct' | 'outside',
     svgTemplate: getInput('svgTemplate'),
@@ -142,8 +143,10 @@ class Generator {
       }
       htmlTable += `  <td align="center">\n`;
       htmlTable += `    <a href="https://github.com/${item.login}">\n`;
-      htmlTable += `    <img src="${item.avatar_url}" width="${this.options.avatarSize};" alt="${item.name || item.login}"/><br />\n`;
-      htmlTable += `    <sub><b>${item.login}</b></sub>\n`;
+      htmlTable += `      <img src="${item.avatar_url}" width="${this.options.avatarSize};" alt="${item.name || item.login}"/>\n`;
+      if (!this.options.hideName) {
+        htmlTable += `    <br /><sub><b>${item.login}</b></sub>\n`;
+      }
       htmlTable += `    </a>\n`;
       htmlTable += `  </td>\n`;
 

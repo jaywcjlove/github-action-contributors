@@ -33,6 +33,13 @@ jobs:
           output: build/CONTRIBUTORS.svg
           avatarSize: 36
 
+      - name: Generate Contributors Images
+        id: contributor_name
+        uses: ./
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          hideName: 'true'
+          avatarSize: 100
 
       - name: Modify README.md
         uses: jaywcjlove/github-action-modify-file-content@main
@@ -42,6 +49,15 @@ jobs:
           closeDelimiter: '<!--GAMFC-END-->'
           body: |
             ${{steps.contributors.outputs.htmlList}}
+
+      - name: Modify README.md
+        uses: jaywcjlove/github-action-modify-file-content@main
+        with:
+          path: README.md
+          openDelimiter: '<!--GAMFC_TABEL_HIDE_NAME-->'
+          closeDelimiter: '<!--GAMFC_TABEL_HIDE_NAME-END-->'
+          body: |
+            ${{steps.contributor_name.outputs.htmlTable}}
 
       - name: Modify README.md
         uses: jaywcjlove/github-action-modify-file-content@main

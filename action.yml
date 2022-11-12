@@ -26,6 +26,10 @@ inputs:
     required: false
     default: '12'
 
+  hideName:
+    description: Hide names in `htmlTable`
+    required: false
+
   svgWidth:
     description: Width of the generated SVG.
     required: false
