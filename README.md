@@ -39,7 +39,18 @@ Write contributors(**`htmlTable`**) to markdown Example:
 
 Bot Users:
 
-<!--GAMFC_TABEL_HIDE_NAME_BOTS--><!--GAMFC_TABEL_HIDE_NAME_BOTS-END-->
+<!--GAMFC_TABEL_HIDE_NAME_BOTS--><table><tr>
+  <td align="center">
+    <a href="https://github.com/github-actions[bot]">
+      <img src="https://avatars.githubusercontent.com/in/15368?v=4" width="100;" alt="github-actions[bot]"/>
+    </a>
+  </td>
+  <td align="center">
+    <a href="https://github.com/renovate[bot]">
+      <img src="https://avatars.githubusercontent.com/in/2740?v=4" width="100;" alt="renovate[bot]"/>
+    </a>
+  </td>
+</tr></table><!--GAMFC_TABEL_HIDE_NAME_BOTS-END-->
 
 Write contributors(**`htmlList`**) to markdown Example:
 
@@ -168,7 +179,18 @@ Write contributors(**`htmlTable`**) to markdown Example:
 
 Bot Users:
 
-<!--GAMFC_TABEL_HIDE_NAME_BOTS--><!--GAMFC_TABEL_HIDE_NAME_BOTS-END-->
+<!--GAMFC_TABEL_HIDE_NAME_BOTS--><table><tr>
+  <td align="center">
+    <a href="https://github.com/github-actions[bot]">
+      <img src="https://avatars.githubusercontent.com/in/15368?v=4" width="100;" alt="github-actions[bot]"/>
+    </a>
+  </td>
+  <td align="center">
+    <a href="https://github.com/renovate[bot]">
+      <img src="https://avatars.githubusercontent.com/in/2740?v=4" width="100;" alt="renovate[bot]"/>
+    </a>
+  </td>
+</tr></table><!--GAMFC_TABEL_HIDE_NAME_BOTS-END-->
 
 ## Inputs
 
