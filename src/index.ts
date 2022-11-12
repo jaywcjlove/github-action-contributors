@@ -134,8 +134,8 @@ class Generator {
   }
   outputMarkdown() {
     const colCount = getColCount(this.options);
-    let htmlTable = `<table><tr>\n`;
-    let htmlList = ``;
+    let htmlTable = `\n<table><tr>\n`;
+    let htmlList = `\n`;
     this.data.forEach((item, idx) => {
       if (idx + 1 % colCount === 0) {
         htmlTable += `  </tr><tr>\n`;
@@ -151,7 +151,8 @@ class Generator {
       htmlList += `  <img src="${item.avatar_url}" width="${this.options.avatarSize};" alt="${item.name || item.login}"/>`;
       htmlList += `</a>\n`;
     });
-    htmlTable += `</tr></table>`;
+    htmlTable += `</tr></table>\n`;
+    htmlList += '\n';
     startGroup(`Request response : \x1b[34m(htmlTable)\x1b[0m ${colCount}`);
     info(`${htmlTable}`);
     endGroup();

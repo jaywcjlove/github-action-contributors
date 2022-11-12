@@ -79,7 +79,7 @@ Made with [contributors](https://github.com/jaywcjlove/github-action-contributor
   <img src="https://jaywcjlove.github.io/github-action-contributors/CONTRIBUTORS.svg" />
 </a>
 
-### Write contributors to markdown
+### Write contributors(**`htmlList`**) to markdown
 
 ```yml
 - name: Generate Contributors Images
@@ -110,6 +110,13 @@ As always, thanks to our amazing contributors!
 
 Made with [contributors](https://github.com/jaywcjlove/github-action-contributors).
 ```
+
+Write contributors(**`htmlList`**) to markdown Example:
+
+<!--GAMFC--><a href="https://github.com/jaywcjlove">
+  <img src="https://avatars.githubusercontent.com/u/1680273?v=4" width="36;" alt="jaywcjlove"/></a>
+<a href="https://github.com/github-actions[bot]">
+  <img src="https://avatars.githubusercontent.com/in/15368?v=4" width="36;" alt="github-actions[bot]"/></a><!--GAMFC-END-->
 
 ## Inputs
 
