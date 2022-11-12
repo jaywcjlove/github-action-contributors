@@ -81,7 +81,7 @@ Use in `README.md` markdown
 
 As always, thanks to our amazing contributors!
 
-<!--GAMFC-->这里放置<!--GAMFC-END-->
+<!--GAMFC-->\n<table><tr>ss</tr><tr>ss<td align="center">ssss<a href="https://github.com/jaywcjlove">ssss<img src="https://avatars.githubusercontent.com/u/1680273?v=4" width="36;" alt="jaywcjlove"/><br />ssss<sub><b>jaywcjlove</b></sub>ssss</a>ss</td></table></tr>\n<!--GAMFC-END-->
 
 Made with [contributors](https://github.com/jaywcjlove/github-action-contributors).
 ```
