@@ -108,7 +108,9 @@ class Generator {
     endGroup();
 
     if (list && list.length > 0) {
-      list = list.filter((item) => !(new RegExp(this.options.filterAuthor)).test(item.login));
+      if (this.options.filterAuthor) {
+        list = list.filter((item) => !(new RegExp(this.options.filterAuthor)).test(item.login));
+      }
       if (Array.isArray(this.data)) {
         this.data = list;
       }
