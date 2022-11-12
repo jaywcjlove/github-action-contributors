@@ -132,8 +132,8 @@ Write contributors(**`htmlList`**) to markdown Example:
   id: contributors
   with:
     filter-author: (renovate\[bot\]|renovate-bot|dependabot\[bot\])
-    openDelimiter: '<!--GAMFC_TABEL_HIDE_NAME-->'
-    closeDelimiter: '<!--GAMFC_TABEL_HIDE_NAME-END-->'
+    openDelimiter: '<!--GAMFC_TABEL_HIDE_NAME--><table><tr>
+</tr></table><!--GAMFC_TABEL_HIDE_NAME-END-->'
     hideName: 'true' # Hide names in htmlTable
     avatarSize: 100  # Set the avatar size.
 
@@ -151,14 +151,16 @@ Use in `README.md` markdown
 
 As always, thanks to our amazing contributors!
 
-<!--GAMFC_TABEL_HIDE_NAME--><!--GAMFC_TABEL_HIDE_NAME-END-->
+<!--GAMFC_TABEL_HIDE_NAME--><table><tr>
+</tr></table><!--GAMFC_TABEL_HIDE_NAME-END-->
 
 Made with [contributors](https://github.com/jaywcjlove/github-action-contributors).
 ```
 
 Write contributors(**`htmlTable`**) to markdown Example:
 
-<!--GAMFC_TABEL_HIDE_NAME--><!--GAMFC_TABEL_HIDE_NAME-END-->
+<!--GAMFC_TABEL_HIDE_NAME--><table><tr>
+</tr></table><!--GAMFC_TABEL_HIDE_NAME-END-->
 
 ## Inputs
 
