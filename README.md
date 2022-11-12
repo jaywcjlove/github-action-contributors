@@ -16,7 +16,20 @@ As always, thanks to our amazing contributors!
 
 Write contributors(**`htmlTable`**) to markdown Example:
 
-<!--GAMFC-TABEL--><table><tr>  <td align="center">    <a href="https://github.com/jaywcjlove">    <img src="https://avatars.githubusercontent.com/u/1680273?v=4" width="36;" alt="jaywcjlove"/><br />    <sub><b>jaywcjlove</b></sub>    </a>  </td>  <td align="center">    <a href="https://github.com/github-actions[bot]">    <img src="https://avatars.githubusercontent.com/in/15368?v=4" width="36;" alt="github-actions[bot]"/><br />    <sub><b>github-actions[bot]</b></sub>    </a>  </td></tr></table><!--GAMFC-TABEL-END-->
+<!--GAMFC-TABEL--><table><tr>
+  <td align="center">
+    <a href="https://github.com/jaywcjlove">
+    <img src="https://avatars.githubusercontent.com/u/1680273?v=4" width="36;" alt="jaywcjlove"/><br />
+    <sub><b>jaywcjlove</b></sub>
+    </a>
+  </td>
+  <td align="center">
+    <a href="https://github.com/github-actions[bot]">
+    <img src="https://avatars.githubusercontent.com/in/15368?v=4" width="36;" alt="github-actions[bot]"/><br />
+    <sub><b>github-actions[bot]</b></sub>
+    </a>
+  </td>
+</tr></table><!--GAMFC-TABEL-END-->
 
 
 Write contributors(**`htmlList`**) to markdown Example:
