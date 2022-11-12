@@ -14,7 +14,12 @@ As always, thanks to our amazing contributors!
   <img src="https://jaywcjlove.github.io/github-action-contributors/CONTRIBUTORS.svg" />
 </a>
 
-Made with [github-action-contributors](https://github.com/jaywcjlove/github-action-contributors).
+Made with [contributors](https://github.com/jaywcjlove/github-action-contributors).
+
+Write contributors to markdown Example:
+
+<!--GAMFC-->
+<!--GAMFC-END-->
 
 ## Usage
 
@@ -49,7 +54,36 @@ As always, thanks to our amazing contributors!
   <img src="https://jaywcjlove.github.io/github-action-contributors/CONTRIBUTORS.svg" />
 </a>
 
-Made with [github-action-contributors](https://github.com/jaywcjlove/github-action-contributors).
+Made with [contributors](https://github.com/jaywcjlove/github-action-contributors).
+```
+
+### Write contributors to markdown
+
+```yml
+- name: Generate Contributors Images
+  uses: jaywcjlove/github-action-contributors@main
+  id: contributors
+  with:
+    filter-author: (renovate\[bot\]|renovate-bot|dependabot\[bot\])
+    avatarSize: 42
+
+- name: Modify README.md
+  uses: jaywcjlove/github-action-modify-file-content@main
+  with:
+    path: README.md
+    body: '${{steps.contributors.outputs.htmlList}}'
+```
+
+Use in `README.md` markdown
+
+```markdown
+## Contributors
+
+As always, thanks to our amazing contributors!
+
+<!--GAMFC-->这里放置<!--GAMFC-END-->
+
+Made with [contributors](https://github.com/jaywcjlove/github-action-contributors).
 ```
 
 ## Inputs
@@ -81,6 +115,8 @@ Made with [github-action-contributors](https://github.com/jaywcjlove/github-acti
 ## Outputs
 
 - `svg` svg image string: `<svg xmlns....`.
+- `htmlTable` Contributor HTML \<Table> form string
+- `htmlList` Contributor HTML \<a> list form string
 
 ## Quick Start
 
@@ -99,6 +135,16 @@ $ npm run build # compile .ts files.
 - [Create Coverage Package](https://github.com/jaywcjlove/github-action-packag) Read and modify the contents of `package.json`.
 - [Generated Badges](https://github.com/jaywcjlove/generated-badges) Create a badge using GitHub Actions and GitHub Workflow CPU time (no 3rd parties servers)
 
+
+
+        <a href="https://github.com/akhilmhdh">
+            <img src="https://avatars.githubusercontent.com/u/31166322?v=4" width="100;" alt="akhilmhdh"/>
+            <br />
+            <sub><b>Akhil Mohan</b></sub>
+        </a>
+
+:- | :-
+:- | :-
 
 ## Contributors
 

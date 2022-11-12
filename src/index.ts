@@ -2,29 +2,8 @@ import path from 'path';
 import fs from 'fs';
 import { setFailed, setOutput, getInput, info, startGroup, endGroup } from '@actions/core';
 import { getOctokit, context } from '@actions/github';
+import { Endpoints } from "@octokit/types";
 import image2uri from 'image2uri';
-
-type Data = {
-  login: string;
-  id: number;
-  node_id: string;
-  avatar_url: string;
-  gravatar_id: string;
-  url: string;
-  html_url: string;
-  followers_url: string;
-  following_url: string;
-  gists_url: string;
-  starred_url: string;
-  subscriptions_url: string;
-  organizations_url: string;
-  repos_url: string;
-  events_url: string;
-  received_events_url: string;
-  type: string;
-  site_admin: boolean;
-  contributions: number;
-}
 
 export function getInputs() {
   const count = parseInt(getInput('count'), 10)
@@ -49,14 +28,19 @@ export function getInputs() {
 }
 
 function calcSectionHeight(total: number, options: ReturnType<typeof getInputs>) {
+  const { avatarMargin } = options;
+  const avatarHeight = options.avatarSize;
+  const itemHeight = avatarHeight + 2 * avatarMargin + options.userNameHeight;
+  const colCount = getColCount(options);
+  return itemHeight * Math.ceil(total / colCount);
+}
+
+function getColCount(options: ReturnType<typeof getInputs>) {
   const { svgWidth } = options;
   const { avatarMargin } = options;
   const avatarWidth = options.avatarSize;
-  const avatarHeight = options.avatarSize;
   const itemWidth = avatarWidth + 2 * avatarMargin;
-  const itemHeight = avatarHeight + 2 * avatarMargin + options.userNameHeight;
-  const colCount = Math.floor(svgWidth / itemWidth);
-  return itemHeight * Math.ceil(total / colCount);
+  return Math.floor(svgWidth / itemWidth);
 }
 
 function getItemBBox(index: number, options: ReturnType<typeof getInputs>) {
@@ -74,13 +58,15 @@ function getItemBBox(index: number, options: ReturnType<typeof getInputs>) {
   }
 }
 
+type UserData = Endpoints["GET /repos/{owner}/{repo}/contributors"]['response']['data'][number]
+
 class Generator {
   options: ReturnType<typeof getInputs>;
   token: string;
   owner: string;
   repo: string;
   svg: string;
-  data: Array<Data> = [];
+  data: UserData[] = [];
   constructor() {
     const { owner, repo } = context.repo;
     if (!repo) {
@@ -109,19 +95,22 @@ class Generator {
   }
   async getContributors() {
     const octokit = getOctokit(this.token);
-    const list = await octokit.request(`GET /repos/${this.owner}/${this.repo}/contributors`, {
+    let list = await octokit.paginate(octokit.rest.repos.listContributors, {
       owner: this.owner,
       repo: this.repo,
-      per_page: 100,
-    });
+    })
 
-    startGroup(`Request Header: \x1b[34m(GET /repos/${this.owner}/${this.repo}/contributors)\x1b[0m`);
-    info(`${JSON.stringify(list.headers, null, 2)}`);
+    startGroup(`Request UserInfo: \x1b[34m(GET /repos/${this.owner}/${this.repo}/contributors)\x1b[0m`);
+    list.forEach((userInfoDetail) => {
+      info(`${JSON.stringify(userInfoDetail, null, 2)}`);
+    })
     endGroup();
 
-    if (list.data && list.data.length > 0) {
-      list.data = (list.data as Array<Data>).filter((item) => !(new RegExp(this.options.filterAuthor)).test(item.login));
-      this.data = list.data;
+    if (list && list.length > 0) {
+      list = list.filter((item) => !(new RegExp(this.options.filterAuthor)).test(item.login));
+      if (Array.isArray(this.data)) {
+        this.data = list;
+      }
     }
     return list
   }
@@ -143,10 +132,44 @@ class Generator {
     setOutput('svg', this.svg)
     return this.svg;
   }
+  outputMarkdown() {
+    const colCount = getColCount(this.options);
+    let htmlTable = `<table><tr>`;
+    let htmlList = ``;
+    this.data.forEach((item, idx) => {
+      if (colCount > idx + 1) {
+        htmlTable += `\s\s</tr><tr>`;
+      }
+      htmlTable += `\s\s<td align="center">`;
+      htmlTable += `\s\s\s\s<a href="https://github.com/${item.login}">`;
+      htmlTable += `\s\s\s\s<img src="${item.avatar_url}" width="${this.options.avatarSize};" alt="${item.name || item.login}"/><br />`;
+      htmlTable += `\s\s\s\s<sub><b>${item.login}</b></sub>`;
+      htmlTable += `\s\s\s\s</a>`;
+      htmlTable += `\s\s</td>`;
+
+      htmlList += `<a href="https://github.com/${item.login}">`;
+      htmlList += `\s\s<img src="${item.avatar_url}" width="${this.options.avatarSize};" alt="${item.name || item.login}"/><br />`;
+      htmlList += `\s\s<sub><b>${item.login}</b></sub>`;
+      htmlList += `</a>`;
+    });
+    htmlTable += `</table></tr>`;
+    startGroup(`Request response : \x1b[34m(htmlTable)\x1b[0m`);
+    info(`${htmlTable}`);
+    endGroup();
+
+    setOutput('htmlTable', htmlTable)
+
+    startGroup(`Request response : \x1b[34m(htmlList)\x1b[0m`);
+    info(`${htmlList}`);
+    endGroup();
+    setOutput('htmlList', htmlTable)
+  }
   async writeFile() {
-    const data = new Uint8Array(Buffer.from(this.svg));
-    await fs.promises.writeFile(this.options.svgPath, data);
-    info(`Generated: "${this.options.svgPath}"`)
+    if (this.options.svgPath) {
+      const data = new Uint8Array(Buffer.from(this.svg));
+      await fs.promises.writeFile(this.options.svgPath, data);
+      info(`Generated: "${this.options.svgPath}"`)
+    }
   }
 }
 
@@ -155,6 +178,7 @@ try {
     const gen = new Generator();
     await gen.getContributors();
     await gen.generator();
+    await gen.outputMarkdown();
     await gen.writeFile();
   })();
 } catch (error) {

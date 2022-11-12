@@ -65,6 +65,10 @@ inputs:
 outputs:
   svg:
     description: 'svg image string'
+  htmlTable:
+    description: 'Contributor HTML <Table> form string'
+  htmlList:
+    description: 'Contributor HTML <a> list form string'
 runs:
   using: 'node16'
   main: 'lib/index.js'
