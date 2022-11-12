@@ -14,11 +14,14 @@ As always, thanks to our amazing contributors!
   <img src="https://jaywcjlove.github.io/github-action-contributors/CONTRIBUTORS.svg" />
 </a>
 
-Made with [contributors](https://github.com/jaywcjlove/github-action-contributors).
-
-Write contributors to markdown Example:
+Write contributors(**`htmlTable`**) to markdown Example:
 
 <!--GAMFC--><table><tr>  <td align="center">    <a href="https://github.com/jaywcjlove">    <img src="https://avatars.githubusercontent.com/u/1680273?v=4" width="36;" alt="jaywcjlove"/><br />    <sub><b>jaywcjlove</b></sub>    </a>  </td>  <td align="center">    <a href="https://github.com/github-actions[bot]">    <img src="https://avatars.githubusercontent.com/in/15368?v=4" width="36;" alt="github-actions[bot]"/><br />    <sub><b>github-actions[bot]</b></sub>    </a>  </td></tr></table><!--GAMFC-END-->
+
+
+Write contributors(**`htmlList`**) to markdown Example:
+
+<!--GAMFC--><!--GAMFC-END-->
 
 ## Usage
 

@@ -134,23 +134,23 @@ class Generator {
   }
   outputMarkdown() {
     const colCount = getColCount(this.options);
-    let htmlTable = `<table><tr>`;
+    let htmlTable = `<table><tr>\n`;
     let htmlList = ``;
     this.data.forEach((item, idx) => {
       if (idx + 1 % colCount === 0) {
-        htmlTable += `  </tr><tr>`;
+        htmlTable += `  </tr><tr>\n`;
       }
-      htmlTable += `  <td align="center">`;
-      htmlTable += `    <a href="https://github.com/${item.login}">`;
-      htmlTable += `    <img src="${item.avatar_url}" width="${this.options.avatarSize};" alt="${item.name || item.login}"/><br />`;
-      htmlTable += `    <sub><b>${item.login}</b></sub>`;
-      htmlTable += `    </a>`;
-      htmlTable += `  </td>`;
+      htmlTable += `  <td align="center">\n`;
+      htmlTable += `    <a href="https://github.com/${item.login}">\n`;
+      htmlTable += `    <img src="${item.avatar_url}" width="${this.options.avatarSize};" alt="${item.name || item.login}"/><br />\n`;
+      htmlTable += `    <sub><b>${item.login}</b></sub>\n`;
+      htmlTable += `    </a>\n`;
+      htmlTable += `  </td>\n`;
 
-      htmlList += `<a href="https://github.com/${item.login}">`;
-      htmlList += `  <img src="${item.avatar_url}" width="${this.options.avatarSize};" alt="${item.name || item.login}"/><br />`;
-      htmlList += `  <sub><b>${item.login}</b></sub>`;
-      htmlList += `</a>`;
+      htmlList += `<a href="https://github.com/${item.login}">\n`;
+      htmlList += `  <img src="${item.avatar_url}" width="${this.options.avatarSize};" alt="${item.name || item.login}"/><br />\n`;
+      htmlList += `  <sub><b>${item.login}</b></sub>\n`;
+      htmlList += `</a>\n`;
     });
     htmlTable += `</tr></table>`;
     startGroup(`Request response : \x1b[34m(htmlTable)\x1b[0m ${colCount}`);
