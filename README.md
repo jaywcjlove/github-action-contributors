@@ -211,7 +211,9 @@ Bot Users:
 
 - `svg` svg image string: `<svg xmlns....`.
 - `htmlTable` Contributor HTML \<Table> form string
+- `htmlTableBots` Contributor(Bot Users) HTML \<Table> form string
 - `htmlList` Contributor HTML \<a> list form string
+- `htmlListBots` Contributor(Bot Users) HTML \<a> list form string
 
 ### `htmlTable`
 

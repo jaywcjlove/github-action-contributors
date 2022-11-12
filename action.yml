@@ -81,7 +81,7 @@ outputs:
   htmlList:
     description: 'Contributor HTML <a> list form string'
   htmlListBots:
-    description: 'Contributor(Bot Users) HTML <Table> form string'
+    description: 'Contributor(Bot Users) HTML <a> form string'
 runs:
   using: 'node16'
   main: 'lib/index.js'
