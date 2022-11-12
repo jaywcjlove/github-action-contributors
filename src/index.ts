@@ -1,9 +1,13 @@
 import path from 'path';
 import fs from 'fs';
-import { setFailed, setOutput, getInput, info, startGroup, endGroup } from '@actions/core';
+import { setFailed, setOutput, getInput, info, startGroup, endGroup, warning } from '@actions/core';
 import { getOctokit, context } from '@actions/github';
 import { Endpoints } from "@octokit/types";
 import image2uri from 'image2uri';
+
+export const htmlEncoding = string => {
+  return String(string).replace(/>/g, '&gt;').replace(/</g, '&lt;');
+};
 
 export function getInputs() {
   const count = parseInt(getInput('count'), 10)
@@ -95,9 +99,19 @@ class Generator {
     info(`output: \x1b[34m${this.options.svgPath}\x1b[0m`);
     info(`owner/repo: \x1b[34m${owner}/${repo}\x1b[0m`);
   }
+  async getUserInfo(login: string) {
+    const octokit = getOctokit(this.token);
+    try {
+      const { data: { name, avatar_url } } = await octokit.rest.users.getByUsername({ username: login });
+      return { name, avatar_url }
+    } catch (error) {
+        warning(`Oops...given github id ${login} is invalid :(`);
+        return { name: login, url: '' };
+    }
+  }
   async getContributors() {
     const octokit = getOctokit(this.token);
-    let list = await octokit.paginate(octokit.rest.repos.listContributors, {
+    const list = await octokit.paginate(octokit.rest.repos.listContributors, {
       owner: this.owner,
       repo: this.repo,
     })
@@ -109,15 +123,16 @@ class Generator {
     endGroup();
 
     if (list && list.length > 0) {
+      let userData: UserData[] = []
       list.filter(el => el.type === 'Bot' || el.login.includes('actions-user')).forEach((item) => this.dataBot.push(item));
       if (this.options.filterAuthor) {
-        list = list.filter((item) => !(new RegExp(this.options.filterAuthor)).test(item.login));
+        userData = list.filter((item) => !(new RegExp(this.options.filterAuthor)).test(item.login));
       }
       if (this.options.excludeBots) {
-        list = list.filter(el => el.type !== 'Bot' && !el.login.includes('actions-user'))
+        userData = list.filter(el => el.type !== 'Bot' && !el.login.includes('actions-user'))
       }
       if (Array.isArray(this.data)) {
-        this.data = list;
+        this.data = userData;
       }
     }
     return list
@@ -140,27 +155,30 @@ class Generator {
     setOutput('svg', this.svg)
     return this.svg;
   }
-  getHTMLStr(data: UserData[]) {
+  async getHTMLStr(data: UserData[]) {
     const colCount = getColCount(this.options);
     let htmlTable = `\n<table><tr>\n`;
     let htmlList = `\n`;
-    data.forEach((item, idx) => {
+    for (let idx = 0; idx < data.length; idx++) {
+      const item = data[idx];
       if (idx + 1 % colCount === 0) {
         htmlTable += `  </tr><tr>\n`;
       }
+      const { name } = await this.getUserInfo(item.login);
+      const nikename = name || item.name || item.login;
       htmlTable += `  <td align="center">\n`;
       htmlTable += `    <a href="https://github.com/${item.login}">\n`;
-      htmlTable += `      <img src="${item.avatar_url}" width="${this.options.avatarSize};" alt="${item.name || item.login}"/>\n`;
+      htmlTable += `      <img src="${item.avatar_url}" width="${this.options.avatarSize};" alt="${nikename}"/>\n`;
       if (!this.options.hideName) {
-        htmlTable += `    <br /><sub><b>${item.login}</b></sub>\n`;
+        htmlTable += `    <br /><sub><b>${nikename}</b></sub>\n`;
       }
       htmlTable += `    </a>\n`;
       htmlTable += `  </td>\n`;
 
       htmlList += `<a href="https://github.com/${item.login}">\n`;
-      htmlList += `  <img src="${item.avatar_url}" width="${this.options.avatarSize};" alt="${item.name || item.login}"/>\n`;
+      htmlList += `  <img src="${item.avatar_url}" width="${this.options.avatarSize};" alt="${nikename}"/>\n`;
       htmlList += `</a>\n`;
-    });
+    }
     htmlTable += `</tr></table>\n\n`;
     htmlList += '\n';
     if (data?.length === 0) {
@@ -169,8 +187,8 @@ class Generator {
     }
     return { htmlList, htmlTable, colCount }
   }
-  outputMarkdown() {
-    const { htmlList, htmlTable, colCount  } = this.getHTMLStr(this.data)
+  async outputMarkdown() {
+    const { htmlList, htmlTable, colCount  } = await this.getHTMLStr(this.data)
     startGroup(`Contributors : \x1b[34m(htmlTable)\x1b[0m ${colCount}`);
     info(`${htmlTable}`);
     endGroup();
@@ -181,7 +199,7 @@ class Generator {
     endGroup();
     setOutput('htmlList', htmlList)
 
-    const { htmlList: htmlListBots, htmlTable: htmlTableBots  } = this.getHTMLStr(this.dataBot);
+    const { htmlList: htmlListBots, htmlTable: htmlTableBots  } = await this.getHTMLStr(this.dataBot);
     startGroup(`Contributors : \x1b[34m(htmlListBots)\x1b[0m ${colCount}`);
     info(`${htmlListBots}`);
     endGroup();
