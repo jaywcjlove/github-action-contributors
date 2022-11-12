@@ -165,6 +165,15 @@ Write contributors(**`htmlList`**) to markdown Example:
 </table>
 ```
 
+### `htmlList`
+
+```html
+<a href="https://github.com/jaywcjlove">
+  <img src="https://avatars.githubusercontent.com/u/1680273?v=4" width="36;" alt="jaywcjlove"/></a>
+<a href="https://github.com/github-actions[bot]">
+  <img src="https://avatars.githubusercontent.com/in/15368?v=4" width="36;" alt="github-actions[bot]"/></a
+```
+
 ## Quick Start
 
 ```shell

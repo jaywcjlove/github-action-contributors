@@ -148,7 +148,7 @@ class Generator {
       htmlTable += `  </td>\n`;
 
       htmlList += `<a href="https://github.com/${item.login}">\n`;
-      htmlList += `  <img src="${item.avatar_url}" width="${this.options.avatarSize};" alt="${item.name || item.login}"/>`;
+      htmlList += `  <img src="${item.avatar_url}" width="${this.options.avatarSize};" alt="${item.name || item.login}"/>\n`;
       htmlList += `</a>\n`;
     });
     htmlTable += `</tr></table>\n`;
