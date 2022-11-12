@@ -46,7 +46,14 @@ Bot Users:
 
 Collaborators Users:
 
-<!--GAMFC_TABEL_COLLABORATORS--><!--GAMFC_TABEL_COLLABORATORS-END-->
+<!--GAMFC_TABEL_COLLABORATORS--><table><tr>
+  <td align="center">
+    <a href="https://github.com/jaywcjlove">
+      <img src="https://avatars.githubusercontent.com/u/1680273?v=4" width="100;" alt="小弟调调™"/>
+    <br /><sub><b>小弟调调™</b></sub>
+    </a>
+  </td>
+</tr></table><!--GAMFC_TABEL_COLLABORATORS-END-->
 
 Write contributors(**`htmlList`**) to markdown Example:
 
