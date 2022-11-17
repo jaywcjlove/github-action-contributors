@@ -124,7 +124,7 @@ class Generator {
       per_page: this.options.count || 100
     })
 
-    startGroup(`UserInfo: \x1b[34m(GET /repos/${this.owner}/${this.repo}/contributors)\x1b[0m`);
+    startGroup(`Contributors UserInfo: (${list?.length}) \x1b[34m(GET /repos/${this.owner}/${this.repo}/contributors)\x1b[0m`);
     list.forEach((userInfoDetail) => {
       info(`${JSON.stringify(userInfoDetail, null, 2)}`);
     })
