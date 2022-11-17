@@ -121,6 +121,7 @@ class Generator {
     const list = await octokit.paginate(octokit.rest.repos.listContributors, {
       owner: this.owner,
       repo: this.repo,
+      per_page: this.options.count || 100
     })
 
     startGroup(`UserInfo: \x1b[34m(GET /repos/${this.owner}/${this.repo}/contributors)\x1b[0m`);
@@ -150,7 +151,8 @@ class Generator {
     const collaboratorsList = await octokit.paginate(octokit.rest.repos.listCollaborators, {
       owner: this.owner,
       repo: this.repo,
-      affiliation: this.options.collaborators
+      affiliation: this.options.collaborators,
+      per_page: this.options.count || 100
     });
 
     startGroup(`Collaborators UserInfo: \x1b[34m(GET /repos/${this.owner}/${this.repo}/collaborators)\x1b[0m`);

@@ -199,7 +199,7 @@ Bot Users:
 
 - `token` - Your `GITHUB_TOKEN`. This is required. Why do we need `token`? Read more here: [About the GITHUB_TOKEN secret](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/authenticating-with-the-github_token#about-the-github_token-secret). Default: `${{ github.token }}`
 - `filter-author` - Regular expression filtering'.
-- `count` - Specify the max count of contributors listed. Default list all contributors.
+- `count` - Specify the max count of contributors listed. Default list all contributors(max 100).
 - `output` - output image path. default: `CONTRIBUTORS.svg`
 - `truncate` - Truncate username by specified length, `0` for no truncate. default: `12`
 - `svgWidth` - Width of the generated SVG. default: `740`
