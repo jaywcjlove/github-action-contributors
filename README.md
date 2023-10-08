@@ -48,9 +48,9 @@ Collaborators Users:
 
 <!--GAMFC_TABEL_COLLABORATORS--><table><tr>
   <td align="center">
-    <a href="https://github.com/jaywcjlove" title="小弟调调™">
-      <img src="https://avatars.githubusercontent.com/u/1680273?v=4" width="100;" alt="小弟调调™"/>
-    <br /><sub><b>小弟调调™</b></sub>
+    <a href="https://github.com/jaywcjlove" title="小弟调调">
+      <img src="https://avatars.githubusercontent.com/u/1680273?v=4" width="100;" alt="小弟调调"/>
+    <br /><sub><b>小弟调调</b></sub>
     </a>
   </td>
 </tr></table><!--GAMFC_TABEL_COLLABORATORS-END-->
