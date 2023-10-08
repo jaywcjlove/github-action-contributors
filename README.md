@@ -274,7 +274,7 @@ $ npm run build # compile .ts files.
 - [Github Release Changelog](https://github.com/jaywcjlove/changelog-generator) Generator A GitHub Action that compares the commit differences between two branches
 - [Create Tags From](https://github.com/jaywcjlove/create-tag-action) Auto create tags from commit or package.json.
 - [Create Coverage Badges](https://github.com/jaywcjlove/coverage-badges-cli) Create coverage badges from coverage reports. (no 3rd parties servers)
-- [Create Coverage Package](https://github.com/jaywcjlove/github-action-packag) Read and modify the contents of `package.json`.
+- [Create Coverage Package](https://github.com/jaywcjlove/github-action-package) Read and modify the contents of `package.json`.
 - [Generated Badges](https://github.com/jaywcjlove/generated-badges) Create a badge using GitHub Actions and GitHub Workflow CPU time (no 3rd parties servers)
 
 ## Contributors
