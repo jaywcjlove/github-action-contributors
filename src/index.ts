@@ -293,5 +293,5 @@ try {
     await gen.writeFile();
   })();
 } catch (error) {
-  setFailed(error.message);
+  setFailed(`${error.message} -> ${error}`);
 }

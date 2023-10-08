@@ -68,7 +68,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           avatarSize: 100
 
-      - name: Modify README.md
+      - name: Modify GAMFC README.md
         uses: jaywcjlove/github-action-modify-file-content@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -78,7 +78,7 @@ jobs:
           body: |
             ${{steps.contributors.outputs.htmlList}}
 
-      - name: Modify README.md
+      - name: Modify GAMFC_TABEL_HIDE_NAME README.md
         uses: jaywcjlove/github-action-modify-file-content@main
         with:
           path: README.md
@@ -87,7 +87,7 @@ jobs:
           body: |
             ${{steps.contributor_name.outputs.htmlTable}}
 
-      - name: Modify README.md
+      - name: Modify GAMFC_TABEL README.md
         uses: jaywcjlove/github-action-modify-file-content@main
         with:
           path: README.md
@@ -96,7 +96,7 @@ jobs:
           body: |
             ${{steps.contributor_table.outputs.htmlTable}}
 
-      - name: Modify README.md
+      - name: Modify GAMFC_TABEL_BOTS README.md
         uses: jaywcjlove/github-action-modify-file-content@main
         with:
           path: README.md
@@ -105,7 +105,7 @@ jobs:
           body: |
             ${{steps.contributor_table.outputs.htmlTableBots}}
 
-      - name: Modify README.md
+      - name: Modify GAMFC_TABEL_COLLABORATORS README.md
         uses: jaywcjlove/github-action-modify-file-content@main
         with:
           path: README.md
