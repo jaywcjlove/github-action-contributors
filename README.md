@@ -1,6 +1,7 @@
 github-action-contributors
 ===
 
+[![Buy me a coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-048754?logo=buymeacoffee)](https://jaywcjlove.github.io/#/sponsor)
 [![Build & Deploy](https://github.com/jaywcjlove/github-action-contributors/actions/workflows/ci.yml/badge.svg)](https://github.com/jaywcjlove/github-action-contributors/actions/workflows/ci.yml)
 [![Repo Dependents](https://badgen.net/github/dependents-repo/jaywcjlove/github-action-contributors)](https://github.com/jaywcjlove/github-action-contributors/network/dependents)
 
