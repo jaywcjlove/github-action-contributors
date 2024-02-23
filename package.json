@@ -4,7 +4,7 @@
   "description": "Github action generates dynamic image URL for contributor list to display it!.",
   "private": true,
   "scripts": {
-    "prepare": "husky install && npm run build",
+    "prepare": "husky && npm run build",
     "build": "ncc build src/index.ts -o lib",
     "watch": "ncc watch src/index.ts -o lib"
   },
@@ -19,15 +19,19 @@
       "npm run build"
     ]
   },
+  "engines": {
+    "node": ">=v20.11.0",
+    "npm": ">=10.2.4"
+  },
   "dependencies": {
     "@actions/core": "~1.10.0",
-    "@actions/github": "~5.1.1",
-    "image-size": "~1.0.2",
+    "@actions/github": "~6.0.0",
+    "image-size": "~1.1.1",
     "image2uri": "~1.1.0"
   },
   "devDependencies": {
     "@kkt/ncc": "~1.1.0",
-    "husky": "~8.0.3",
-    "lint-staged": "~14.0.0"
+    "husky": "~9.0.11",
+    "lint-staged": "~15.2.2"
   }
 }

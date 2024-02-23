@@ -91,7 +91,7 @@ outputs:
   htmlCollaboratorsListBots:
     description: 'Collaborators user(Bot Users) HTML <a> form string'
 runs:
-  using: 'node16'
+  using: 'node20'
   main: 'lib/index.js'
 branding:
   icon: 'list'
