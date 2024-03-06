@@ -29,8 +29,12 @@ jobs:
           site: "Contributors {{version}}"
           menus:
             Home: index.html
-            Apps: https://jaywcjlove.github.io/#/app
-            Sponsor: https://jaywcjlove.github.io/#/sponsor
+            Apps: 
+              url: https://jaywcjlove.github.io/#/app
+              target: __blank
+            Sponsor: 
+              url: https://jaywcjlove.github.io/#/sponsor
+              target: __blank
           footer: |
             <a href="https://jaywcjlove.github.io/#/app" target="_blank">App</a> • 
             <a href="https://jaywcjlove.github.io/#/sponsor" target="_blank">Sponsor</a> • 
