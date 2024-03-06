@@ -29,8 +29,10 @@ jobs:
           site: "Contributors {{version}}"
           menus:
             Home: index.html
+            Apps: https://jaywcjlove.github.io/#/app
             Sponsor: https://jaywcjlove.github.io/#/sponsor
           footer: |
+            <a href="https://jaywcjlove.github.io/#/app" target="_blank">App</a> • 
             <a href="https://jaywcjlove.github.io/#/sponsor" target="_blank">Sponsor</a> • 
             <a href="https://jaywcjlove.github.io/changelog-generator" target="_blank">Changelog Generator</a> • 
             <a href="https://jaywcjlove.github.io/create-tag-action" target="_blank">Create Tag</a> • 
@@ -42,7 +44,7 @@ jobs:
           
           EOF
   
-      - run: npm install idoc@1.27.2 -g
+      - run: npm install idoc@1 -g
       - run: idoc
 
       - name: Generate Contributors Images
