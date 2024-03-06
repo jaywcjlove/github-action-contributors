@@ -214,9 +214,9 @@ class Generator {
       htmlTable += `    </a>\n`;
       htmlTable += `  </td>\n`;
 
-      htmlList += `<a href="https://github.com/${item.login}" title="${nikename}">\n`;
-      htmlList += `  <img src="${item.avatar_url}" width="${this.options.avatarSize};" alt="${nikename}"/>\n`;
-      htmlList += `</a>\n`;
+      htmlList += `\n<a href="https://github.com/${item.login}" title="${nikename}">`;
+      htmlList += `<img src="${item.avatar_url}" width="${this.options.avatarSize};" alt="${nikename}"/>`;
+      htmlList += `</a>`;
     }
     htmlTable += `</tr></table>\n\n`;
     htmlList += '\n';
