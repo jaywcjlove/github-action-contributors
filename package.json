@@ -1,6 +1,6 @@
 {
   "name": "github-action-contributors",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Github action generates dynamic image URL for contributor list to display it!.",
   "private": true,
   "scripts": {
