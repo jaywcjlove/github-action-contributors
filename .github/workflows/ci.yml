@@ -81,7 +81,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           path: README.md
-          openDelimiter: '<!--GAMFC-->'
+          openDelimiter: '<!--GAMFC-->\n'
           closeDelimiter: '<!--GAMFC-END-->'
           body: ${{steps.contributors.outputs.htmlList}}
 
