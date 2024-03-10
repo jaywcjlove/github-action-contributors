@@ -84,7 +84,7 @@ jobs:
           openDelimiter: '<!--GAMFC-->'
           closeDelimiter: '<!--GAMFC-END-->'
           body: |
-            \\n${{steps.contributors.outputs.htmlList}}
+            ${{steps.contributors.outputs.htmlList}}
 
       - name: Modify GAMFC_TABEL_HIDE_NAME README.md
         uses: jaywcjlove/github-action-modify-file-content@main
