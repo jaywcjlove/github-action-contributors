@@ -197,7 +197,7 @@ class Generator {
   async getHTMLStr(data: (UserData | CollaboratorsUserData)[]) {
     const colCount = getColCount(this.options);
     let htmlTable = `\n<table><tr>\n`;
-    let htmlList = `\n`;
+    let htmlList = `\\n`;
     for (let idx = 0; idx < data.length; idx++) {
       const item = data[idx];
       if (idx + 1 % colCount === 0) {
