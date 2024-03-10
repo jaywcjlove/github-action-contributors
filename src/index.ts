@@ -197,7 +197,7 @@ class Generator {
   async getHTMLStr(data: (UserData | CollaboratorsUserData)[]) {
     const colCount = getColCount(this.options);
     let htmlTable = `\n<table><tr>\n`;
-    let htmlList = `\n\n`;
+    let htmlList = `\n`;
     for (let idx = 0; idx < data.length; idx++) {
       const item = data[idx];
       if (idx + 1 % colCount === 0) {
@@ -214,9 +214,9 @@ class Generator {
       htmlTable += `    </a>\n`;
       htmlTable += `  </td>\n`;
 
-      htmlList += `\n<a href="https://github.com/${item.login}" title="${nikename}">`;
+      htmlList += `<a href="https://github.com/${item.login}" title="${nikename}">`;
       htmlList += `<img src="${item.avatar_url}" width="${this.options.avatarSize};" alt="${nikename}"/>`;
-      htmlList += `</a>`;
+      htmlList += `</a>\n`;
     }
     htmlTable += `</tr></table>\n\n`;
     htmlList += '\n';
