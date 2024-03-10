@@ -59,8 +59,6 @@ Collaborators Users:
 Write contributors(**`htmlList`**) to markdown Example:
 
 <!--GAMFC-->&nbsp;
-
-
 <a href="https://github.com/jaywcjlove" title="小弟调调"><img src="https://avatars.githubusercontent.com/u/1680273?v=4" width="36;" alt="小弟调调"/></a><!--GAMFC-END-->
 
 ## Usage
@@ -128,8 +126,6 @@ Use in `README.md` markdown
 As always, thanks to our amazing contributors!
 
 <!--GAMFC-->&nbsp;
-
-
 <a href="https://github.com/jaywcjlove" title="小弟调调"><img src="https://avatars.githubusercontent.com/u/1680273?v=4" width="36;" alt="小弟调调"/></a><!--GAMFC-END-->
 
 Made with [contributors](https://github.com/jaywcjlove/github-action-contributors).
@@ -138,8 +134,6 @@ Made with [contributors](https://github.com/jaywcjlove/github-action-contributor
 Write contributors(**`htmlList`**) to markdown Example:
 
 <!--GAMFC-->&nbsp;
-
-
 <a href="https://github.com/jaywcjlove" title="小弟调调"><img src="https://avatars.githubusercontent.com/u/1680273?v=4" width="36;" alt="小弟调调"/></a><!--GAMFC-END-->
 
 ### Write contributors(**`htmlTable`**) to markdown
@@ -286,8 +280,6 @@ $ npm run build # compile .ts files.
 As always, thanks to our amazing contributors!
 
 <!--GAMFC-->&nbsp;
-
-
 <a href="https://github.com/jaywcjlove" title="小弟调调"><img src="https://avatars.githubusercontent.com/u/1680273?v=4" width="36;" alt="小弟调调"/></a><!--GAMFC-END-->
 
 Made with [contributors](https://github.com/jaywcjlove/github-action-contributors).
