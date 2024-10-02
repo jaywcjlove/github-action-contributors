@@ -24,7 +24,7 @@
     "npm": ">=10.2.4"
   },
   "dependencies": {
-    "@actions/core": "~1.10.0",
+    "@actions/core": "~1.11.0",
     "@actions/github": "~6.0.0",
     "image-size": "~1.1.1",
     "image2uri": "~1.1.0"
