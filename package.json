@@ -27,7 +27,7 @@
     "@actions/core": "~1.10.0",
     "@actions/github": "~6.0.0",
     "image-size": "~2.0.0",
-    "image2uri": "~1.1.0"
+    "image2uri": "~2.1.0"
   },
   "devDependencies": {
     "@kkt/ncc": "~1.1.0",
